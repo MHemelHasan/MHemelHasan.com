@@ -20,8 +20,14 @@
   --color-accent-indigo: var(--accent-indigo);
   --color-accent-soft: var(--accent-soft);
   --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-hover: var(--brand-primary-hover);
   --color-brand-secondary: var(--brand-secondary);
-  --color-brand-soft: var(--brand-soft);
+  --color-brand-soft: var(--brand-primary-soft);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-muted: var(--brand-muted);
+  --color-brand-background: var(--brand-bg);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-border: var(--brand-border);
   --color-status-beta: var(--status-beta);
   --color-status-live: var(--status-live);
 }
@@ -30,34 +36,43 @@
 :root {
   color-scheme: light;
 
-  --bg-canvas: #f8f9fb;
-  --bg-canvas-subtle: #f1f3f7;
-  --bg-surface-card: #ffffff;
-  --bg-surface-nested: #f1f4f8;
-  --bg-surface-interactive: #e5eaf2;
+  /* Brand Kit v2.0 primitives. */
+  --brand-primary: #315CF5;
+  --brand-primary-hover: #264AC9;
+  --brand-primary-soft: #EEF2FF;
+  --brand-secondary: var(--brand-primary-hover);
+  --brand-ink: #111318;
+  --brand-muted: #646A73;
+  --brand-bg: #FAF9F6;
+  --brand-surface: #FFFFFF;
+  --brand-border: #E6E2DC;
 
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-interactive: rgba(15, 23, 42, 0.14);
-  --border-accent: rgba(2, 132, 199, 0.35);
+  /* Existing application semantics mapped onto the canonical brand palette. */
+  --bg-canvas: var(--brand-bg);
+  --bg-canvas-subtle: var(--brand-bg);
+  --bg-surface-card: var(--brand-surface);
+  --bg-surface-nested: color-mix(in srgb, var(--brand-bg) 72%, var(--brand-surface));
+  --bg-surface-interactive: var(--brand-primary-soft);
 
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
+  --border-subtle: var(--brand-border);
+  --border-interactive: color-mix(in srgb, var(--brand-border) 72%, var(--brand-muted));
+  --border-accent: rgb(49 92 245 / 35%);
 
-  --accent-sky: #0284c7;
-  --accent-blue: #2563eb;
-  --accent-indigo: #4f46e5;
-  --accent-soft: rgba(2, 132, 199, 0.08);
-  --brand-primary: var(--accent-sky);
-  --brand-secondary: var(--accent-blue);
-  --brand-soft: var(--accent-soft);
+  --text-primary: var(--brand-ink);
+  --text-secondary: var(--brand-muted);
+  --text-muted: var(--brand-muted);
+
+  --accent-sky: var(--brand-primary);
+  --accent-blue: var(--brand-primary);
+  --accent-indigo: var(--brand-primary-hover);
+  --accent-soft: var(--brand-primary-soft);
   --status-beta: #b45309;
   --status-live: #059669;
 
-  --bg-radial-1: rgba(2, 132, 199, 0.06);
-  --bg-radial-2: rgba(79, 70, 229, 0.03);
-  --bg-dots: rgba(15, 23, 42, 0.035);
-  --shadow-ambient: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+  --bg-radial-1: rgb(49 92 245 / 6%);
+  --bg-radial-2: rgb(38 74 201 / 3%);
+  --bg-dots: rgb(17 19 24 / 3.5%);
+  --shadow-ambient: 0 4px 20px -2px rgb(17 19 24 / 6%);
 }
 
 /* Dark Theme */
@@ -72,24 +87,22 @@
 
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-interactive: rgba(255, 255, 255, 0.16);
-  --border-accent: rgba(56, 189, 248, 0.35);
+  --border-accent: rgb(102 133 255 / 40%);
 
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
 
-  --accent-sky: #38bdf8;
-  --accent-blue: #3b82f6;
-  --accent-indigo: #6366f1;
-  --accent-soft: rgba(56, 189, 248, 0.12);
-  --brand-primary: var(--accent-sky);
-  --brand-secondary: var(--accent-blue);
-  --brand-soft: var(--accent-soft);
+  /* Accessible dark-mode interaction color derived from the primary cobalt. */
+  --accent-sky: #6685FF;
+  --accent-blue: #6685FF;
+  --accent-indigo: #6685FF;
+  --accent-soft: rgb(49 92 245 / 16%);
   --status-beta: #f59e0b;
   --status-live: #10b981;
 
-  --bg-radial-1: rgba(56, 189, 248, 0.09);
-  --bg-radial-2: rgba(99, 102, 241, 0.05);
+  --bg-radial-1: rgb(49 92 245 / 9%);
+  --bg-radial-2: rgb(49 92 245 / 5%);
   --bg-dots: rgba(255, 255, 255, 0.04);
   --shadow-ambient: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
 }
@@ -113,6 +126,22 @@ body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
   transition: background-color 200ms ease, color 200ms ease;
+}
+
+.brand-logo-light {
+  display: block;
+}
+
+.brand-logo-dark {
+  display: none;
+}
+
+.dark .brand-logo-light {
+  display: none;
+}
+
+.dark .brand-logo-dark {
+  display: block;
 }
 
 /* Custom subtle scrollbars */
@@ -168,5 +197,3 @@ html.reduce-motion ::after {
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
 }
-
-

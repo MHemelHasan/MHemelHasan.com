@@ -3,9 +3,13 @@
 **Document ID:** `03-design-system.md`  
 **Author:** Antigravity (Pair Programming with M Hemel Hasan)  
 **Date:** September 2026  
-**Status:** Draft — Pending Final Review
+**Status:** Baseline interaction specification — brand identity finalized in Brand Kit v2.0
 
 ---
+
+> **Canonical brand source:** `docs/brand/AGENT_BRAND_CONTEXT.md` and
+> `docs/brand/BRAND_GUIDELINES.md` supersede earlier provisional logo, color,
+> and typography decisions in this document.
 
 ## 1. Visual Philosophy: Interactive, Human & Product-Oriented
 
@@ -15,41 +19,42 @@ The visual target for V3 is inspired by the interaction quality, fluid warmth, a
 1. **Interactive Curiosity over Static Monologue:** The site invites the visitor to touch, click, ask, and explore. Every interactive element (prompt chips, tabs, cards, inputs) feels responsive and satisfying.
 2. **Avoid Formulaic "Hacker" Clichés:** We explicitly avoid the trap of equating "senior engineer" with an all-black screen, neon cyan accents, ubiquitous monospace fonts, and giant empty voids. The site has visual warmth, subtle depth, and clear personality.
 3. **Designed, Not Bare:** It avoids the opposite extreme of an empty white page with three lines of unstyled text. It feels considered, crafted, and complete.
-4. **Provisional Palette Notice:** The token values below are a solid, cohesive starting baseline for development, but are **provisional** and will be tuned during the Phase 1A visual review.
+4. **Canonical Brand Foundation:** Brand Kit v2.0 defines the approved Concept C identity, warm-neutral palette, deep cobalt accent, Geist Sans, and Geist Mono.
 
 ---
 
-## 2. Color Strategy & Palette Tokens (Provisional)
+## 2. Color Strategy & Palette Tokens
 
-The revised color system balances deep, refined tones with accessible contrast and warm, tactile interactive states.
+The finalized brand system uses warm neutrals as the foundation and cobalt as a controlled identity and interaction color. Runtime mappings live in `app/globals.css`; canonical source values live in `docs/brand/tokens/`.
 
 ### 2.1 Color Tokens
 
-| Token Name | Provisional Value | Usage & Role |
+| Brand Token | Final Value | Usage & Role |
 | :--- | :--- | :--- |
-| `--bg-canvas` | `#0B0D13` | Deep, dark charcoal-slate canvas (warm neutral base, avoiding harsh pure black). |
-| `--bg-surface-elevated` | `#131620` | Elevated container cards, chat conversation shell, and prompt bar. |
-| `--bg-surface-nested` | `#1A1E2C` | Nested cards, rich response blocks, code/manifest areas, and active tabs. |
-| `--bg-interactive` | `#23283B` | Interactive button fills, chip hover states, and input field backgrounds. |
-| `--border-subtle` | `rgba(255, 255, 255, 0.08)` | Crisp 1px structural hairline borders on cards and dividers. |
-| `--border-interactive` | `rgba(255, 255, 255, 0.16)` | Borders for prompt chips, hovered cards, and active focus boundaries. |
-| `--text-primary` | `#F1F3F7` | Primary headlines, identity, active prompt text, and card titles. |
-| `--text-secondary` | `#9BA3B4` | Explanatory prose, body descriptions, response text, and metadata. |
-| `--text-muted` | `#636D82` | Kickers, attribution headers, timestamps, and inactive tab labels. |
-| `--accent-primary` | `#3B82F6` / `#38BDF8` | Friendly, confident blue/sky accent for active indicators, submit button, and live status. |
-| `--accent-subtle` | `rgba(59, 130, 246, 0.12)` | Background tint for selected chips and active badges. |
-| `--status-live` | `#10B981` | Emerald green pulse for live venture status (Social AI). |
+| `--brand-primary` | `#315CF5` | Primary cobalt identity and action color. |
+| `--brand-primary-hover` | `#264AC9` | Cobalt hover and active state. |
+| `--brand-primary-soft` | `#EEF2FF` | Soft brand-tinted interaction surface. |
+| `--brand-ink` | `#111318` | Primary light-theme text and logo ink. |
+| `--brand-muted` | `#646A73` | Secondary and muted text. |
+| `--brand-bg` | `#FAF9F6` | Warm light-theme canvas. |
+| `--brand-surface` | `#FFFFFF` | Elevated light-theme surface. |
+| `--brand-border` | `#E6E2DC` | Warm neutral border. |
+
+The Brand Kit does not define a complete dark palette. Existing dark neutral
+surfaces remain as an application-level theme, while branded assets and
+interactions stay anchored to the cobalt identity. See
+`docs/brand/INTEGRATION_NOTES.md` for the accessibility mapping.
 
 ---
 
 ## 3. Typography Strategy
 
-We pair an approachable, contemporary geometric sans-serif for display headings and body copy with a clean monospace face used strictly for code snippets and technical tags.
+We pair Geist Sans for display headings and body copy with Geist Mono used strictly for code snippets, technical metadata, IDs, and system values.
 
 ### 3.1 Typeface Families
-- **Display & Headings:** `Plus Jakarta Sans` or `Inter` — weights: 600 (Semi-Bold), 700 (Bold), 800 (Extra-Bold).
-- **Body & Prose:** `Inter` — weights: 400 (Regular), 500 (Medium). Clean letter tracking and generous line height for effortless reading.
-- **Code & Micro-Tags:** `JetBrains Mono` — weights: 500 (Medium). Used selectively for file paths, tech tags, and stage numbering (not forced across the entire UI).
+- **Display & Headings:** `Geist Sans` — weights: 600 (Semi-Bold), 700 (Bold), 800 (Extra-Bold).
+- **Body & Prose:** `Geist Sans` — weights: 400 (Regular), 500 (Medium).
+- **Code & Micro-Tags:** `Geist Mono` — weights: 500 (Medium). Used selectively for file paths, technical metadata, IDs, and stage numbering.
 
 ### 3.2 Typographic Hierarchy Scale
 

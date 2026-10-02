@@ -1,0 +1,12 @@
+:root {
+  --brand-primary: #315CF5;
+  --brand-primary-hover: #264AC9;
+  --brand-primary-soft: #EEF2FF;
+  --brand-ink: #111318;
+  --brand-muted: #646A73;
+  --brand-bg: #FAF9F6;
+  --brand-surface: #FFFFFF;
+  --brand-border: #E6E2DC;
+  --font-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+}

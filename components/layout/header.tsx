@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { personalProfile } from "@/data/profile";
 import { MessageSquareText, Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
@@ -37,13 +38,27 @@ export function Header({ onStartConversation }: HeaderProps) {
         {/* Brand identity */}
         <a
           href="#top"
-          className="group flex items-center gap-2.5 text-base font-bold tracking-tight text-text-primary transition-colors hover:text-accent-sky"
+          className="flex h-8 items-center transition-opacity hover:opacity-80"
           aria-label={`${personalProfile.name} home`}
         >
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-border-interactive bg-surface-card text-xs font-mono font-bold text-accent-sky transition-all group-hover:border-accent-sky/50 group-hover:shadow-[0_0_12px_rgba(56,189,248,0.25)]">
-            MH
-          </span>
-          <span className="text-sm font-semibold sm:text-base">{personalProfile.name}</span>
+          <Image
+            src="/brand/logo/m-hemel-hasan-logo-horizontal.svg"
+            alt=""
+            aria-hidden="true"
+            width={650}
+            height={120}
+            priority
+            className="brand-logo-light h-7 w-auto sm:h-8"
+          />
+          <Image
+            src="/brand/logo/m-hemel-hasan-logo-horizontal-on-dark.svg"
+            alt=""
+            aria-hidden="true"
+            width={650}
+            height={120}
+            priority
+            className="brand-logo-dark h-7 w-auto sm:h-8"
+          />
         </a>
 
         {/* Desktop Static Section Navigation */}
@@ -123,6 +138,3 @@ export function Header({ onStartConversation }: HeaderProps) {
     </header>
   );
 }
-
-
-

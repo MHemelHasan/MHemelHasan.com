@@ -1,0 +1,21 @@
+{
+  "brand": {
+    "name": "M Hemel Hasan",
+    "identity": "Product Engineer. Builder. Founder.",
+    "logoDirection": "Concept C \u2014 wordmark + interlocking MH monogram",
+    "colors": {
+      "cobalt": "#315CF5",
+      "hover": "#264AC9",
+      "soft": "#EEF2FF",
+      "ink": "#111318",
+      "muted": "#646A73",
+      "background": "#FAF9F6",
+      "surface": "#FFFFFF",
+      "border": "#E6E2DC"
+    },
+    "typography": {
+      "primary": "Geist Sans",
+      "secondary": "Geist Mono"
+    }
+  }
+}
