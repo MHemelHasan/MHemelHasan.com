@@ -41,8 +41,9 @@ function HomeContent() {
 
         <PipelineSection onAskInConversation={handleAskInConversation} />
 
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 pb-20 space-y-20 sm:space-y-24 lg:space-y-28">
-          <EngineeringSection onAskInConversation={handleAskInConversation} />
+        <EngineeringSection onAskInConversation={handleAskInConversation} />
+
+        <div className="mx-auto max-w-6xl space-y-20 px-4 pb-20 sm:space-y-24 sm:px-6 lg:space-y-28">
           <JourneySection onAskInConversation={handleAskInConversation} />
           <ContactSection onStartConversation={handleStartConversation} />
         </div>

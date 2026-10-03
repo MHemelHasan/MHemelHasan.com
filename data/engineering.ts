@@ -25,7 +25,7 @@ export const engineeringDomains: SystemDomain[] = [
     title: "Platform Ecosystems & App Engineering",
     tagline: "Building native applications deeply integrated into major commercial platforms.",
     description:
-      "Deep expertise across platform app stores, embedded runtime iframes, authentication handshakes, and marketplace requirements.",
+      "Hands-on experience across platform app stores, embedded runtime iframes, authentication handshakes, and marketplace requirements.",
     capabilities: [
       {
         title: "Shopify App Development",
@@ -85,12 +85,12 @@ export const engineeringDomains: SystemDomain[] = [
   {
     id: "commerce-systems",
     title: "Commerce Systems & Conversion Engineering",
-    tagline: "High-converting shopping carts, bundle builders, and merchant monetization tools.",
+    tagline: "Conversion-focused shopping carts, bundle builders, and merchant monetization tools.",
     description:
-      "Building checkout and cart systems where every millisecond of latency and UX friction directly affects merchant revenue.",
+      "Building checkout and cart systems with attention to latency and UX friction across critical checkout and purchase flows.",
     capabilities: [
       {
-        title: "Frictionless Checkout Engines",
+        title: "Streamlined Checkout Flows",
         description: "Floating cart drawers, one-click checkout flows, and multi-step customer journeys.",
         technologies: ["WooCommerce Checkout", "Cart State Engines", "Drawer UI"],
       },
@@ -104,38 +104,38 @@ export const engineeringDomains: SystemDomain[] = [
   {
     id: "infrastructure-tooling",
     title: "Infrastructure, Deployment & Tooling",
-    tagline: "Reliable Linux servers, reverse proxies, automated deployments, and AI-accelerated workflows.",
+    tagline: "Linux servers, reverse proxies, deployment workflows, and AI-assisted tooling.",
     description:
-      "Hands-on server provisioning, environment configuration, SSL management, and high-velocity development pipelines.",
+      "Hands-on server provisioning, environment configuration, SSL management, and development pipelines.",
     capabilities: [
       {
         title: "Linux VPS & Server Management",
-        description: "Operating system hardening, Nginx reverse proxy configuration, process supervisors, and SSL.",
+        description: "Linux server configuration, Nginx reverse proxy setup, process supervision, and SSL management.",
         technologies: ["Ubuntu / Debian", "Nginx", "Systemd / PM2", "SSH & Firewall"],
       },
       {
         title: "Cloud & Deployment Workflows",
-        description: "Automated Git deployment pipelines, AWS / Google Cloud infrastructure basics, and observability.",
-        technologies: ["AWS", "Google Cloud", "Git / GitHub Actions", "AI Coding Agents"],
+        description: "Git-based deployment pipelines, cloud-hosted service configuration, environment setup, and production monitoring.",
+        technologies: ["Git / GitHub Actions", "Cloud-hosted Services", "Production Monitoring", "AI Coding Agents"],
       },
     ],
   },
   {
     id: "interface-engineering",
     title: "Interface Craft & Modern Web",
-    tagline: "Accessible, responsive web applications built with semantic tokens and zero-flash performance.",
+    tagline: "Accessible, responsive web applications built with semantic tokens and persistent theme behavior.",
     description:
       "Pairing aesthetic polish with technical precision: fluid responsiveness, keyboard navigation, and theme persistence.",
     capabilities: [
       {
         title: "Modern React & Next.js",
-        description: "Next.js App Router, React Server / Client Components, and performance-optimized rendering.",
+        description: "Next.js App Router, React Server / Client Components, and performance-conscious rendering.",
         technologies: ["Next.js App Router", "React 19", "TypeScript", "Tailwind CSS v4"],
       },
       {
         title: "Design Systems & Accessibility",
-        description: "Semantic token architecture, dual-mode color systems, WCAG AA compliance, and tactile micro-interactions.",
-        technologies: ["Semantic CSS Tokens", "WCAG AA", "Accessible Landmarks", "Focus States"],
+        description: "Semantic token architecture, dual-mode color systems, accessibility-aware implementation, and tactile micro-interactions.",
+        technologies: ["Semantic CSS Tokens", "WCAG Guidance", "Accessible Landmarks", "Focus States"],
       },
     ],
   },

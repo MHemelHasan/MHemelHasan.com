@@ -5,12 +5,12 @@ import {
   ConversationProvider,
   useConversation,
 } from "@/components/conversation/conversation-context";
-import { EngineeringSection } from "@/components/sections/engineering-section";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { ImmersiveConversation } from "@/components/conversation/immersive-conversation";
 import { JourneySection } from "@/components/sections/journey-section";
 import { PipelineSection } from "@/components/sections/pipeline-section";
+import { EngineeringSection } from "@/components/sections/engineering-section";
 import { PortfolioHero } from "@/components/hero/portfolio-hero";
 import { ProductsSection } from "@/components/sections/products-section";
 import { VenturesSection } from "@/components/sections/ventures-section";
@@ -29,8 +29,9 @@ function Round4ProductsBuildContent() {
         <ProductsSection onAskInConversation={(query) => openConversation(query)} />
         <PipelineSection onAskInConversation={(query) => openConversation(query)} />
 
+        <EngineeringSection onAskInConversation={(query) => openConversation(query)} />
+
         <div className="mx-auto max-w-6xl space-y-20 px-4 pb-20 sm:space-y-24 sm:px-6 lg:space-y-28">
-          <EngineeringSection onAskInConversation={(query) => openConversation(query)} />
           <JourneySection onAskInConversation={(query) => openConversation(query)} />
           <ContactSection onStartConversation={() => openConversation()} />
         </div>
