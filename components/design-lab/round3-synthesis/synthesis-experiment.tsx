@@ -2,9 +2,9 @@
 
 import { ConversationProvider, useConversation } from "@/components/conversation/conversation-context";
 import { ImmersiveConversation } from "@/components/conversation/immersive-conversation";
+import { PortfolioHero } from "@/components/hero/portfolio-hero";
+import { VenturesSection } from "@/components/sections/ventures-section";
 import { SynthesisHeader } from "./synthesis-header";
-import { SynthesisHero } from "./synthesis-hero";
-import { SynthesisVentures } from "./synthesis-ventures";
 
 function SynthesisContent() {
   const { openConversation } = useConversation();
@@ -12,9 +12,9 @@ function SynthesisContent() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-canvas text-text-primary">
       <SynthesisHeader onStartConversation={() => openConversation()} />
-      <main>
-        <SynthesisHero />
-        <SynthesisVentures onAsk={openConversation} />
+      <main id="top">
+        <PortfolioHero />
+        <VenturesSection onAsk={openConversation} />
       </main>
       <ImmersiveConversation />
     </div>

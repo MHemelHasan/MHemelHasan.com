@@ -62,12 +62,12 @@ export function Header({ onStartConversation }: HeaderProps) {
         </a>
 
         {/* Desktop Static Section Navigation */}
-        <nav className="hidden md:flex items-center gap-6" aria-label="Main Navigation">
+        <nav className="hidden min-[900px]:flex items-center gap-6" aria-label="Main Navigation">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-xs lg:text-sm font-medium text-text-secondary transition-colors hover:text-accent-sky"
+              className="whitespace-nowrap text-xs lg:text-sm font-medium text-text-secondary transition-colors hover:text-accent-sky"
             >
               {link.label}
             </a>
@@ -81,7 +81,7 @@ export function Header({ onStartConversation }: HeaderProps) {
           <button
             type="button"
             onClick={handleStartConversation}
-            className="hidden sm:inline-flex cursor-pointer items-center gap-2 rounded-full border border-border-interactive bg-surface-card/90 px-3.5 py-1.5 text-xs font-medium text-text-primary shadow-sm backdrop-blur-sm transition-all hover:border-accent-sky/60 hover:bg-surface-interactive hover:text-accent-sky active:scale-95 sm:text-sm"
+            className="hidden min-[900px]:inline-flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-full border border-border-interactive bg-surface-card/90 px-3.5 py-1.5 text-xs font-medium text-text-primary shadow-sm backdrop-blur-sm transition-all hover:border-accent-sky/60 hover:bg-surface-interactive hover:text-accent-sky active:scale-95 sm:text-sm"
           >
             <MessageSquareText className="h-3.5 w-3.5 text-accent-sky" />
             <span>Start a Conversation</span>
@@ -91,7 +91,7 @@ export function Header({ onStartConversation }: HeaderProps) {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="inline-flex md:hidden p-2 rounded-xl border border-border-interactive bg-surface-card text-text-secondary hover:text-text-primary active:scale-95"
+            className="inline-flex min-[900px]:hidden p-2 rounded-xl border border-border-interactive bg-surface-card text-text-secondary hover:text-text-primary active:scale-95"
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle Navigation Menu"
           >
@@ -102,7 +102,7 @@ export function Header({ onStartConversation }: HeaderProps) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-border-subtle bg-canvas/95 backdrop-blur-lg px-4 pt-2 pb-6 space-y-3">
+        <div className="min-[900px]:hidden border-b border-border-subtle bg-canvas/95 backdrop-blur-lg px-4 pt-2 pb-6 space-y-3">
           <nav className="flex flex-col space-y-2">
             {navLinks.map((link) => (
               <a

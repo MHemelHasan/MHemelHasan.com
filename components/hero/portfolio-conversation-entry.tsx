@@ -7,7 +7,7 @@ import { initialPromptSuggestions } from "@/data/prompts";
 
 const featuredPromptIds = new Set(["about-me", "social-ai", "show-products", "how-build"]);
 
-export function SynthesisConversationEntry() {
+export function PortfolioConversationEntry() {
   const [query, setQuery] = useState("");
   const { openConversation } = useConversation();
   const prompts = initialPromptSuggestions.filter((prompt) => featuredPromptIds.has(prompt.id));
@@ -32,11 +32,11 @@ export function SynthesisConversationEntry() {
 
         <div className="min-w-0">
           <form onSubmit={handleSubmit} className="flex min-h-12 items-end border-b border-text-primary">
-            <label htmlFor="synthesis-conversation-query" className="sr-only">
+            <label htmlFor="portfolio-conversation-query" className="sr-only">
               Ask M Hemel Hasan a question
             </label>
             <input
-              id="synthesis-conversation-query"
+              id="portfolio-conversation-query"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="What would you like to know?"

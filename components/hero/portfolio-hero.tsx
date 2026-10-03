@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { personalProfile } from "@/data/profile";
-import { SynthesisConversationEntry } from "./synthesis-conversation-entry";
+import { PortfolioConversationEntry } from "./portfolio-conversation-entry";
 
 const buildStages = ["Research", "Architecture", "Systems", "Integrations", "Launch"];
 
-export function SynthesisHero() {
+export function PortfolioHero() {
   return (
-    <section id="top" className="relative">
+    <section id="hero" className="relative">
       <div className="mx-auto max-w-7xl px-5 pb-0 pt-8 sm:px-8 sm:pb-10 sm:pt-12 lg:px-12 lg:pb-8">
         <div className="grid grid-cols-[minmax(0,1fr)_132px] items-start gap-x-4 gap-y-6 sm:grid-cols-[minmax(0,1fr)_220px] sm:gap-x-8 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-7">
           <div className="min-w-0 lg:col-span-8">
@@ -64,7 +64,7 @@ export function SynthesisHero() {
         </div>
 
         <div className="mt-4 lg:ml-[8.333%] lg:w-[83.333%]">
-          <SynthesisConversationEntry />
+          <PortfolioConversationEntry />
         </div>
       </div>
     </section>

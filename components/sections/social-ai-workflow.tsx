@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { socialAIVenture } from "@/data/ventures";
 
-export function ProductWorkflow() {
+export function SocialAIWorkflow() {
   const steps = socialAIVenture.workflowSteps ?? [];
   const [activeIndex, setActiveIndex] = useState(0);
   const activeStep = steps[activeIndex];
