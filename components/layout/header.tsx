@@ -8,9 +8,15 @@ import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 interface HeaderProps {
   onStartConversation?: () => void;
+  homeHref?: string;
+  navigationBasePath?: string;
 }
 
-export function Header({ onStartConversation }: HeaderProps) {
+export function Header({
+  onStartConversation,
+  homeHref = "#top",
+  navigationBasePath = "",
+}: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -37,7 +43,7 @@ export function Header({ onStartConversation }: HeaderProps) {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
         {/* Brand identity */}
         <a
-          href="#top"
+          href={homeHref}
           className="flex h-8 items-center transition-opacity hover:opacity-80"
           aria-label={`${personalProfile.name} home`}
         >
@@ -66,7 +72,7 @@ export function Header({ onStartConversation }: HeaderProps) {
           {navLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
+              href={`${navigationBasePath}${link.href}`}
               className="whitespace-nowrap text-xs lg:text-sm font-medium text-text-secondary transition-colors hover:text-accent-sky"
             >
               {link.label}
@@ -107,7 +113,7 @@ export function Header({ onStartConversation }: HeaderProps) {
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={`${navigationBasePath}${link.href}`}
                 onClick={handleLinkClick}
                 className="px-3 py-2 rounded-xl text-sm font-medium text-text-secondary hover:text-accent-sky hover:bg-surface-nested transition-colors"
               >
@@ -115,7 +121,7 @@ export function Header({ onStartConversation }: HeaderProps) {
               </a>
             ))}
             <a
-              href="#contact"
+              href={`${navigationBasePath}#contact`}
               onClick={handleLinkClick}
               className="px-3 py-2 rounded-xl text-sm font-medium text-text-secondary hover:text-accent-sky hover:bg-surface-nested transition-colors"
             >

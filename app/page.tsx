@@ -37,21 +37,13 @@ function HomeContent() {
 
         <VenturesSection onAsk={openConversation} />
 
-        {/* Full Static Portfolio Experience (Path B: Complete Portfolio Proof) */}
+        <ProductsSection onAskInConversation={handleAskInConversation} />
+
+        <PipelineSection onAskInConversation={handleAskInConversation} />
+
         <div className="mx-auto max-w-6xl px-4 sm:px-6 pb-20 space-y-20 sm:space-y-24 lg:space-y-28">
-          {/* 1. Products Led & Shipped */}
-          <ProductsSection onAskInConversation={handleAskInConversation} />
-
-          {/* 2. How I Build */}
-          <PipelineSection onAskInConversation={handleAskInConversation} />
-
-          {/* 3. Engineering Depth */}
           <EngineeringSection onAskInConversation={handleAskInConversation} />
-
-          {/* 4. Builder Journey */}
           <JourneySection onAskInConversation={handleAskInConversation} />
-
-          {/* 5. Start a Conversation / Contact */}
           <ContactSection onStartConversation={handleStartConversation} />
         </div>
       </main>
