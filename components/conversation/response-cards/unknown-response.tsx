@@ -17,20 +17,24 @@ export function UnknownResponse({ onSelectPrompt }: UnknownResponseProps) {
   return (
     <div className="space-y-6 text-text-primary">
       <ResponseIntro>
-        I couldn&apos;t match that phrase to a portfolio topic. Try one of these paths into the work.
+        That question sits outside the portfolio topics I can answer reliably. You can still ask
+        about my work, ventures, process, journey, or how to get in touch.
       </ResponseIntro>
 
-      <ResponseSection label="Suggested topics">
-        <div className="border-t border-border-subtle">
+      <ResponseSection label="Try asking">
+        <div className="grid gap-2 sm:grid-cols-2">
           {suggestions.map((prompt) => (
             <button
               key={prompt.id}
               type="button"
               onClick={() => onSelectPrompt(prompt)}
-              className="group flex min-h-12 w-full cursor-pointer items-center justify-between border-b border-border-subtle text-left text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
+              className="group flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 rounded-lg border border-border-subtle bg-surface-card px-3.5 py-2.5 text-left text-sm font-medium leading-5 text-text-secondary transition-[border-color,background-color,color] hover:border-accent-sky/50 hover:bg-accent-soft hover:text-text-primary"
             >
-              {prompt.label}
-              <ArrowRight className="h-4 w-4 text-text-muted transition-colors group-hover:text-accent-sky" aria-hidden="true" />
+              <span>{prompt.sampleQuery}</span>
+              <ArrowRight
+                className="h-4 w-4 shrink-0 text-text-muted transition-colors group-hover:text-accent-sky"
+                aria-hidden="true"
+              />
             </button>
           ))}
         </div>

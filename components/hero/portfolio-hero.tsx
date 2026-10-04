@@ -7,8 +7,11 @@ const buildStages = ["Research", "Architecture", "Systems", "Integrations", "Lau
 
 export function PortfolioHero() {
   return (
-    <section id="hero" className="relative">
-      <div className="mx-auto max-w-7xl px-5 pb-0 pt-8 sm:px-8 sm:pb-10 sm:pt-12 lg:px-12 lg:pb-8">
+    <section
+      id="hero"
+      className="relative md:grid md:min-h-[calc(100svh-4rem)] md:grid-rows-[minmax(0,1fr)_auto_minmax(0,1fr)]"
+    >
+      <div className="mx-auto w-full max-w-7xl px-5 pb-0 pt-8 sm:px-8 sm:pb-10 sm:pt-12 md:row-start-2 lg:px-12 lg:pb-8">
         <div className="grid grid-cols-[minmax(0,1fr)_132px] items-start gap-x-4 gap-y-6 sm:grid-cols-[minmax(0,1fr)_220px] sm:gap-x-8 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-7">
           <div className="min-w-0 lg:col-span-8">
             <p className="text-sm font-medium leading-5 text-brand-primary sm:text-base">{personalProfile.roleTitle}</p>
@@ -65,6 +68,15 @@ export function PortfolioHero() {
 
         <div className="mt-4 lg:ml-[8.333%] lg:w-[83.333%]">
           <PortfolioConversationEntry />
+        </div>
+      </div>
+
+      <div
+        className="relative mx-auto hidden h-full w-full max-w-7xl px-5 sm:px-8 md:row-start-3 md:block lg:px-12"
+        aria-hidden="true"
+      >
+        <div className="relative h-full lg:ml-[8.333%] lg:w-[83.333%]">
+          <span className="absolute -top-10 bottom-0 left-12 w-px bg-brand-primary lg:-top-8 lg:left-[34%]" />
         </div>
       </div>
     </section>

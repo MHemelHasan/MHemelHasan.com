@@ -9,10 +9,48 @@ import {
   RotateCcw,
   ArrowRight,
   MessageSquareText,
+  Sparkles,
+  User,
+  Bot,
+  Layers,
+  GitFork,
+  Compass,
+  Send,
 } from "lucide-react";
 import Image from "next/image";
 import { personalProfile } from "@/data/profile";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { PromptSuggestion } from "@/types/conversation";
+
+const starterPromptIds = new Set([
+  "about-me",
+  "social-ai",
+  "show-products",
+  "how-build",
+  "journey",
+  "lets-talk",
+]);
+
+function PromptIcon({ iconName }: { iconName: PromptSuggestion["iconName"] }) {
+  const iconClassName = "h-4 w-4 shrink-0 text-accent-sky";
+
+  switch (iconName) {
+    case "User":
+      return <User className={iconClassName} aria-hidden="true" />;
+    case "Bot":
+      return <Bot className={iconClassName} aria-hidden="true" />;
+    case "Layers":
+      return <Layers className={iconClassName} aria-hidden="true" />;
+    case "GitFork":
+      return <GitFork className={iconClassName} aria-hidden="true" />;
+    case "Compass":
+      return <Compass className={iconClassName} aria-hidden="true" />;
+    case "Send":
+      return <Send className={iconClassName} aria-hidden="true" />;
+    default:
+      return <Sparkles className={iconClassName} aria-hidden="true" />;
+  }
+}
 
 function ThinkingIndicator({
   text,
@@ -59,6 +97,7 @@ function ThinkingIndicator({
           : "opacity-100 scale-100 translate-y-0 animate-in fade-in-0 motion-reduce:animate-none"
       }`}
     >
+      <Sparkles className="h-4 w-4 shrink-0 text-accent-sky" aria-hidden="true" />
       <span className="font-medium text-text-primary">{text}</span>
       <span className="flex items-center gap-1.5 pl-1" aria-hidden="true">
         <span className="conversation-thinking-dot h-1.5 w-1.5 rounded-full bg-accent-sky motion-reduce:animate-none" />
@@ -150,6 +189,48 @@ export function ImmersiveConversation() {
 
   const lastIntent = activeIntent || (messages[messages.length - 1]?.intent ?? null);
   const contextualPrompts = getContextualPrompts(lastIntent);
+  const starterPrompts = initialPromptSuggestions.filter((prompt) =>
+    starterPromptIds.has(prompt.id)
+  );
+
+  const renderComposer = (prominent = false) => (
+    <form
+      onSubmit={handleSubmit}
+      data-role="conversation-composer"
+      className={`group relative flex w-full items-center rounded-lg border bg-surface-card p-1.5 transition-[border-color,box-shadow] duration-200 hover:border-accent-sky/50 focus-within:border-accent-sky ${
+        prominent
+          ? "border-border-interactive shadow-sm"
+          : "border-border-interactive"
+      }`}
+    >
+      <label htmlFor="conversation-input" className="sr-only">
+        Ask a question about my work
+      </label>
+      <div className="pl-3 text-text-muted transition-colors group-focus-within:text-accent-sky">
+        <MessageSquareText className="h-4 w-4" aria-hidden="true" />
+      </div>
+
+      <input
+        id="conversation-input"
+        ref={inputRef}
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Ask a question about my work…"
+        aria-label="Ask a question about my work"
+        className="w-full border-none bg-transparent px-3 py-2.5 text-sm font-medium text-text-primary shadow-none outline-none placeholder:text-text-muted/80 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 sm:text-base"
+      />
+
+      <button
+        type="submit"
+        disabled={!inputValue.trim()}
+        aria-label="Send question"
+        className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-md bg-accent-sky font-bold text-white transition-[background-color,opacity,transform] hover:bg-brand-primary-hover active:scale-95 disabled:cursor-not-allowed disabled:opacity-35 sm:h-11 sm:w-11"
+      >
+        <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+      </button>
+    </form>
+  );
 
   return (
     <div
@@ -207,148 +288,141 @@ export function ImmersiveConversation() {
         </div>
       </header>
 
-      <main className="mx-auto flex h-full w-full max-w-3xl lg:max-w-4xl flex-1 flex-col overflow-hidden px-4 sm:px-6">
-        <div
-          ref={threadContainerRef}
-          aria-live="polite"
-          className="flex-1 space-y-8 overflow-y-auto py-8 pr-1 scroll-smooth sm:py-10"
-        >
-          {messages.length === 0 ? (
-            <div className="flex min-h-[48vh] flex-col justify-center py-8">
-              <div className="max-w-2xl">
-                <p className="font-mono text-xs text-accent-sky">Portfolio conversation</p>
-                <h2 className="mt-4 text-3xl font-semibold leading-tight text-text-primary sm:text-4xl">
-                  Hi — what would you like to explore?
-                </h2>
-                <p className="mt-4 max-w-xl text-base leading-7 text-text-secondary">
-                  You can ask about what I&apos;m building, products I&apos;ve shipped at Themefic, my engineering process, or my career background.
-                </p>
+      <main className="mx-auto flex h-full w-full max-w-3xl flex-1 flex-col overflow-hidden px-4 sm:px-6 lg:max-w-4xl">
+        {messages.length === 0 ? (
+          <div
+            ref={threadContainerRef}
+            aria-live="polite"
+            className="flex-1 overflow-y-auto scroll-smooth"
+          >
+            <div className="mx-auto flex min-h-full max-w-2xl flex-col justify-center py-8 sm:py-12">
+              <div className="flex items-center gap-2.5 font-mono text-[11px] text-text-muted">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full border border-border-accent bg-accent-soft text-accent-sky">
+                  <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                </span>
+                <span>M Hemel Hasan · Portfolio assistant</span>
               </div>
 
-              <div className="mt-8 grid max-w-2xl border-t border-border-interactive sm:grid-cols-2">
-                {initialPromptSuggestions.map((prompt) => (
-                  <button
-                    key={prompt.id}
-                    type="button"
-                    onClick={() => {
-                      isUserScrollingRef.current = false;
-                      sendMessage(prompt.sampleQuery, prompt.targetIntent);
-                    }}
-                    className="group flex min-h-14 cursor-pointer items-center justify-between border-b border-border-subtle px-1 pr-3 text-left text-sm font-medium text-text-secondary transition-colors hover:text-text-primary sm:odd:pr-6 sm:even:border-l sm:even:pl-6"
-                  >
-                    <span>{prompt.label}</span>
-                    <ArrowRight className="h-4 w-4 text-text-muted transition-colors group-hover:text-accent-sky" aria-hidden="true" />
-                  </button>
-                ))}
+              <h2 className="mt-5 text-2xl font-semibold leading-tight text-text-primary sm:text-3xl">
+                Hi — what would you like to explore?
+              </h2>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-text-secondary sm:text-base sm:leading-7">
+                Ask about what I&apos;m building, products I&apos;ve shipped, how I work, or my journey.
+                I&apos;ll answer here and point you to the relevant work when useful.
+              </p>
+
+              <div className="mt-7">{renderComposer(true)}</div>
+
+              <div className="mt-7">
+                <p className="font-mono text-[11px] uppercase text-text-muted">Try asking</p>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {starterPrompts.map((prompt) => (
+                    <button
+                      key={prompt.id}
+                      type="button"
+                      onClick={() => {
+                        isUserScrollingRef.current = false;
+                        sendMessage(prompt.sampleQuery, prompt.targetIntent);
+                      }}
+                      className="group flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border border-border-subtle bg-surface-card px-3.5 py-2.5 text-left text-sm font-medium leading-5 text-text-secondary transition-[border-color,background-color,color] hover:border-accent-sky/50 hover:bg-accent-soft hover:text-text-primary"
+                    >
+                      <PromptIcon iconName={prompt.iconName} />
+                      <span>{prompt.sampleQuery}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
-          ) : (
-            <div className="space-y-8">
-              {messages.map((msg, index) => {
-                const isUser = msg.sender === "user";
-                const isLatest = index === messages.length - 1;
+          </div>
+        ) : (
+          <>
+            <div
+              ref={threadContainerRef}
+              aria-live="polite"
+              className="flex-1 space-y-8 overflow-y-auto py-8 pr-1 scroll-smooth sm:py-10"
+            >
+              <div className="space-y-8">
+                {messages.map((msg, index) => {
+                  const isUser = msg.sender === "user";
+                  const isLatest = index === messages.length - 1;
 
-                if (isUser) {
+                  if (isUser) {
+                    return (
+                      <div key={msg.id} data-role="user-message" className="flex justify-end pt-1">
+                        <div className="max-w-[88%] rounded-lg border border-border-accent bg-accent-soft px-4 py-3 sm:max-w-[72%]">
+                          <span className="block font-mono text-[10px] uppercase text-accent-sky">You</span>
+                          <span className="mt-1 block text-sm font-semibold leading-6 text-text-primary sm:text-base">
+                            {msg.queryText}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  }
+
                   return (
-                    <div key={msg.id} data-role="user-message" className="flex justify-end pt-1">
-                      <div className="max-w-[88%] border-r-2 border-accent-sky py-1 pr-4 text-right sm:max-w-[72%]">
-                        <span className="block font-mono text-[10px] uppercase text-accent-sky">You asked</span>
-                        <span className="mt-1 block text-sm font-semibold leading-6 text-text-primary sm:text-base">{msg.queryText}</span>
+                    <div
+                      key={msg.id}
+                      data-role="assistant-message"
+                      ref={isLatest ? latestMessageRef : undefined}
+                      className="w-full pt-1 animate-in fade-in-0 slide-in-from-bottom-2 duration-300 motion-reduce:duration-0"
+                    >
+                      <div className="mb-4 flex items-center gap-2 font-mono text-[11px] text-text-muted">
+                        <Sparkles className="h-3.5 w-3.5 text-accent-sky" aria-hidden="true" />
+                        <span>M Hemel Hasan</span>
+                      </div>
+
+                      <div className="w-full">
+                        <ResponseRenderer
+                          intent={msg.intent}
+                          onSelectPrompt={(p) => {
+                            isUserScrollingRef.current = false;
+                            sendMessage(p.sampleQuery, p.targetIntent);
+                          }}
+                          onNavigateSection={navigateToSection}
+                        />
                       </div>
                     </div>
                   );
-                }
+                })}
 
-                return (
-                  <div
-                    key={msg.id}
-                    data-role="assistant-message"
-                    ref={isLatest ? latestMessageRef : undefined}
-                    className="w-full pt-1 animate-in fade-in-0 slide-in-from-bottom-2 duration-300 motion-reduce:duration-0"
-                  >
-                    <div className="mb-4 flex items-center gap-3 font-mono text-[11px] text-text-muted">
-                      <span className="h-px w-8 bg-accent-sky" aria-hidden="true" />
-                      <span>Response</span>
-                    </div>
-
-                    <div className="w-full">
-                      <ResponseRenderer
-                        intent={msg.intent}
-                        onSelectPrompt={(p) => {
-                          isUserScrollingRef.current = false;
-                          sendMessage(p.sampleQuery, p.targetIntent);
-                        }}
-                        onNavigateSection={navigateToSection}
-                      />
-                    </div>
+                {isResponding && (
+                  <div ref={thinkingRef}>
+                    <ThinkingIndicator
+                      key={thinkingCycleId || "thinking-active"}
+                      text={thinkingText}
+                      isTransitioning={isThinkingTransitioning}
+                      onPainted={notifyThinkingPainted}
+                    />
                   </div>
-                );
-              })}
+                )}
+              </div>
+            </div>
 
-              {isResponding && (
-                <div ref={thinkingRef}>
-                  <ThinkingIndicator
-                    key={thinkingCycleId || "thinking-active"}
-                    text={thinkingText}
-                    isTransitioning={isThinkingTransitioning}
-                    onPainted={notifyThinkingPainted}
-                  />
+            <div className="shrink-0 space-y-3 border-t border-border-subtle bg-canvas pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 sm:pb-6">
+              <div className="overflow-x-auto py-0.5 no-scrollbar">
+                <p className="font-mono text-[11px] text-text-muted">Continue the conversation</p>
+                <div className="mt-2 flex w-max items-center gap-2 pr-1">
+                  {contextualPrompts.map((prompt) => (
+                    <button
+                      key={prompt.id}
+                      type="button"
+                      onClick={() => {
+                        isUserScrollingRef.current = false;
+                        sendMessage(prompt.sampleQuery, prompt.targetIntent);
+                      }}
+                      className="inline-flex min-h-9 cursor-pointer items-center gap-2 rounded-lg border border-border-subtle bg-surface-card px-3 py-1.5 text-xs font-medium text-text-secondary transition-[border-color,background-color,color] hover:border-accent-sky/50 hover:bg-accent-soft hover:text-text-primary"
+                    >
+                      <PromptIcon iconName={prompt.iconName} />
+                      <span>{prompt.sampleQuery}</span>
+                    </button>
+                  ))}
                 </div>
-              )}
+              </div>
+
+              {renderComposer()}
             </div>
-          )}
-        </div>
-
-        <div className="shrink-0 space-y-3 border-t border-border-subtle bg-canvas pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 sm:pb-6">
-          <div className="flex items-center gap-3 overflow-x-auto py-0.5 no-scrollbar">
-            <span className="hidden shrink-0 font-mono text-[11px] uppercase text-text-muted sm:inline">
-              Follow-up:
-            </span>
-            <div className="flex shrink-0 items-center gap-4">
-              {contextualPrompts.map((prompt) => (
-                <button
-                  key={prompt.id}
-                  type="button"
-                  onClick={() => {
-                    isUserScrollingRef.current = false;
-                    sendMessage(prompt.sampleQuery, prompt.targetIntent);
-                  }}
-                  className="inline-flex min-h-9 cursor-pointer items-center border-b border-transparent text-xs font-medium text-text-secondary transition-colors hover:border-accent-sky hover:text-text-primary"
-                >
-                  <span>{prompt.label}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <form
-            onSubmit={handleSubmit}
-            className="group relative flex w-full items-center rounded-lg border border-border-interactive bg-surface-card p-1.5 transition-colors hover:border-accent-sky/50 focus-within:border-accent-sky"
-          >
-            <div className="pl-3 text-text-muted transition-colors group-focus-within:text-accent-sky">
-              <MessageSquareText className="h-4 w-4" />
-            </div>
-
-            <input
-              ref={inputRef}
-              type="text"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Ask me anything about my work, architecture, ventures…"
-              aria-label="Type your message"
-              className="w-full border-none bg-transparent px-3 py-2 text-sm font-medium text-text-primary shadow-none outline-none placeholder:text-text-muted/80 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0 sm:text-base"
-            />
-
-            <button
-              type="submit"
-              disabled={!inputValue.trim()}
-              aria-label="Send message"
-              className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-md bg-accent-sky font-bold text-white transition-colors hover:bg-brand-primary-hover disabled:cursor-not-allowed disabled:opacity-35 sm:h-11 sm:w-11"
-            >
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
-            </button>
-          </form>
-        </div>
+          </>
+        )}
       </main>
     </div>
   );

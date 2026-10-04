@@ -69,7 +69,7 @@ export function PortfolioConversationEntry() {
         </div>
       </div>
       <span
-        className="absolute -bottom-6 left-8 h-6 w-px bg-brand-primary sm:-bottom-12 sm:left-12 sm:h-12 lg:left-[34%]"
+        className="absolute -bottom-6 left-8 h-6 w-px bg-brand-primary sm:-bottom-12 sm:left-12 sm:h-12 md:hidden"
         aria-hidden="true"
       />
     </div>

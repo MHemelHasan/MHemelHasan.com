@@ -87,10 +87,11 @@ export function Header({
           <button
             type="button"
             onClick={handleStartConversation}
-            className="hidden min-[900px]:inline-flex cursor-pointer items-center gap-2 whitespace-nowrap rounded-full border border-border-interactive bg-surface-card/90 px-3.5 py-1.5 text-xs font-medium text-text-primary shadow-sm backdrop-blur-sm transition-all hover:border-accent-sky/60 hover:bg-surface-interactive hover:text-accent-sky active:scale-95 sm:text-sm"
+            aria-label="Ask Hemel in a conversation"
+            className="hidden h-9 cursor-pointer items-center justify-center gap-2 whitespace-nowrap px-3 text-sm font-medium text-text-secondary transition-colors hover:text-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-canvas min-[900px]:inline-flex"
           >
-            <MessageSquareText className="h-3.5 w-3.5 text-accent-sky" />
-            <span>Start a Conversation</span>
+            <MessageSquareText className="h-4 w-4" aria-hidden="true" />
+            <span>Ask Hemel</span>
           </button>
 
           {/* Mobile menu toggle */}
@@ -133,10 +134,11 @@ export function Header({
             <button
               type="button"
               onClick={handleStartConversation}
+              aria-label="Ask Hemel in a conversation"
               className="w-full inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-accent-sky/40 bg-accent-soft px-4 py-2.5 text-xs font-semibold text-accent-sky shadow-sm transition-all active:scale-95"
             >
-              <MessageSquareText className="h-3.5 w-3.5" />
-              <span>Start a Conversation</span>
+              <MessageSquareText className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>Ask Hemel</span>
             </button>
           </div>
         </div>

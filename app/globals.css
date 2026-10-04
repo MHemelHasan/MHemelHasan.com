@@ -153,6 +153,12 @@ body {
   animation-delay: 240ms;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .conversation-thinking-dot {
+    animation: none;
+  }
+}
+
 .brand-logo-light {
   display: block;
 }
