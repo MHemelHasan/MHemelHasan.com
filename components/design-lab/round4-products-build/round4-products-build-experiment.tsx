@@ -1,6 +1,5 @@
 "use client";
 
-import { ContactSection } from "@/components/sections/contact-section";
 import {
   ConversationProvider,
   useConversation,
@@ -8,9 +7,10 @@ import {
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { ImmersiveConversation } from "@/components/conversation/immersive-conversation";
-import { JourneySection } from "@/components/sections/journey-section";
+import { ContactSection } from "@/components/sections/contact-section";
 import { PipelineSection } from "@/components/sections/pipeline-section";
 import { EngineeringSection } from "@/components/sections/engineering-section";
+import { JourneySection } from "@/components/sections/journey-section";
 import { PortfolioHero } from "@/components/hero/portfolio-hero";
 import { ProductsSection } from "@/components/sections/products-section";
 import { VenturesSection } from "@/components/sections/ventures-section";
@@ -31,10 +31,8 @@ function Round4ProductsBuildContent() {
 
         <EngineeringSection onAskInConversation={(query) => openConversation(query)} />
 
-        <div className="mx-auto max-w-6xl space-y-20 px-4 pb-20 sm:space-y-24 sm:px-6 lg:space-y-28">
-          <JourneySection onAskInConversation={(query) => openConversation(query)} />
-          <ContactSection onStartConversation={() => openConversation()} />
-        </div>
+        <JourneySection />
+        <ContactSection onStartConversation={() => openConversation()} />
       </main>
 
       <Footer />

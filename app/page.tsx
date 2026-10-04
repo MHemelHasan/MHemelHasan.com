@@ -43,10 +43,9 @@ function HomeContent() {
 
         <EngineeringSection onAskInConversation={handleAskInConversation} />
 
-        <div className="mx-auto max-w-6xl space-y-20 px-4 pb-20 sm:space-y-24 sm:px-6 lg:space-y-28">
-          <JourneySection onAskInConversation={handleAskInConversation} />
-          <ContactSection onStartConversation={handleStartConversation} />
-        </div>
+        <JourneySection />
+
+        <ContactSection onStartConversation={handleStartConversation} />
       </main>
 
       {/* Footer */}
