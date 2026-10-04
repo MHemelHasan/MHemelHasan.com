@@ -39,8 +39,9 @@ function getHumanThinkingText(intent: IntentKey): string {
     case "about_me":
       return "Pulling that together…";
     case "social_ai":
-    case "ventures":
       return "Looking through my work on Social AI…";
+    case "ventures":
+      return "Looking through my venture work…";
     case "support_ai":
       return "Pulling up exploratory notes…";
     case "products":

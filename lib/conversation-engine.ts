@@ -2,7 +2,6 @@ import { IntentKey } from "@/types/conversation";
 
 export function resolveIntent(query: string, directIntent?: IntentKey): IntentKey {
   if (directIntent) {
-    if (directIntent === "ventures") return "social_ai";
     return directIntent;
   }
 
@@ -26,18 +25,24 @@ export function resolveIntent(query: string, directIntent?: IntentKey): IntentKe
   // 2. Social AI (Primary founder venture)
   if (
     clean.includes("social ai") ||
-    clean.includes("social") ||
-    clean.includes("venture") ||
-    clean.includes("what are you building") ||
-    clean.includes("currently building") ||
-    clean.includes("active venture") ||
-    clean.includes("founder") ||
-    clean.includes("startup")
+    clean.includes("social automation") ||
+    clean.includes("active venture")
   ) {
     return "social_ai";
   }
 
-  // 3. Journey / Background / Career Evolution
+  // 3. Ventures (overview of current and exploratory venture work)
+  if (
+    /\bventures?\b/.test(clean) ||
+    /\bstartups?\b/.test(clean) ||
+    clean.includes("what are you building") ||
+    clean.includes("currently building") ||
+    clean.includes("founder work")
+  ) {
+    return "ventures";
+  }
+
+  // 4. Journey / Background / Career Evolution
   if (
     clean.includes("journey") ||
     clean.includes("career") ||
@@ -53,7 +58,51 @@ export function resolveIntent(query: string, directIntent?: IntentKey): IntentKe
     return "journey";
   }
 
-  // 4. About Me (General identity, background & bio)
+  // 5. Contact / Collaboration
+  if (
+    clean.includes("contact") ||
+    clean.includes("talk") ||
+    clean.includes("email") ||
+    clean.includes("hire") ||
+    clean.includes("reach") ||
+    clean.includes("collaborate") ||
+    clean.includes("together") ||
+    clean.includes("work with")
+  ) {
+    return "contact";
+  }
+
+  // 6. How I Build (Pipeline & architecture methodology)
+  if (
+    /\bhow\b/.test(clean) ||
+    /\bbuild(?:ing|s|er)?\b/.test(clean) ||
+    /\bprocess(?:es)?\b/.test(clean) ||
+    /\bpipeline\b/.test(clean) ||
+    /\barchitecture\b/.test(clean) ||
+    /\bmethodology\b/.test(clean) ||
+    /\bflow\b/.test(clean) ||
+    /\bapproach\b/.test(clean)
+  ) {
+    return "pipeline";
+  }
+
+  // 7. Products (Themefic commercial platform work)
+  if (
+    /\bproducts?\b/.test(clean) ||
+    clean.includes("themefic") ||
+    clean.includes("shipped") ||
+    clean.includes("bundlefic") ||
+    clean.includes("instantio") ||
+    clean.includes("connectfic") ||
+    clean.includes("quotezic") ||
+    /\bplugins?\b/.test(clean) ||
+    /\bapps?\b/.test(clean) ||
+    clean.includes("commercial work")
+  ) {
+    return "products";
+  }
+
+  // 8. About Me (General identity and biography fallback)
   if (
     clean.includes("about") ||
     clean.includes("yourself") ||
@@ -67,51 +116,6 @@ export function resolveIntent(query: string, directIntent?: IntentKey): IntentKe
     clean.includes("intro")
   ) {
     return "about_me";
-  }
-
-  // 5. Products (Themefic commercial platform work)
-  if (
-    clean.includes("product") ||
-    clean.includes("themefic") ||
-    clean.includes("shipped") ||
-    clean.includes("bundlefic") ||
-    clean.includes("instantio") ||
-    clean.includes("connectfic") ||
-    clean.includes("quotezic") ||
-    clean.includes("plugin") ||
-    clean.includes("app") ||
-    clean.includes("commercial work")
-  ) {
-    return "products";
-  }
-
-  // 6. How I Build (Pipeline & architecture methodology)
-  if (
-    clean.includes("how") ||
-    clean.includes("build") ||
-    clean.includes("process") ||
-    clean.includes("pipeline") ||
-    clean.includes("architecture") ||
-    clean.includes("methodology") ||
-    clean.includes("flow") ||
-    clean.includes("approach")
-  ) {
-    return "pipeline";
-  }
-
-  // 7. Contact / Collaboration
-  if (
-    clean.includes("contact") ||
-    clean.includes("talk") ||
-    clean.includes("email") ||
-    clean.includes("hire") ||
-    clean.includes("reach") ||
-    clean.includes("collaborate") ||
-    clean.includes("together") ||
-    clean.includes("work together") ||
-    clean.includes("work with")
-  ) {
-    return "contact";
   }
 
   return "unknown";

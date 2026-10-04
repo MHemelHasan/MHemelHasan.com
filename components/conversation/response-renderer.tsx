@@ -9,6 +9,7 @@ import { PipelineResponse } from "./response-cards/pipeline-response";
 import { JourneyResponse } from "./response-cards/journey-response";
 import { ContactResponse } from "./response-cards/contact-response";
 import { UnknownResponse } from "./response-cards/unknown-response";
+import { VentureResponse } from "./response-cards/venture-response";
 
 interface ResponseRendererProps {
   intent: IntentKey;
@@ -23,20 +24,21 @@ export function ResponseRenderer({
 }: ResponseRendererProps) {
   switch (intent) {
     case "about_me":
-      return <AboutResponse onSelectPrompt={onSelectPrompt} onNavigateSection={onNavigateSection} />;
+      return <AboutResponse onNavigateSection={onNavigateSection} />;
     case "social_ai":
+      return <SocialAIResponse onNavigateSection={onNavigateSection} />;
     case "ventures":
-      return <SocialAIResponse onSelectPrompt={onSelectPrompt} onNavigateSection={onNavigateSection} />;
+      return <VentureResponse onNavigateSection={onNavigateSection} />;
     case "support_ai":
-      return <SupportAIResponse onSelectPrompt={onSelectPrompt} onNavigateSection={onNavigateSection} />;
+      return <SupportAIResponse onNavigateSection={onNavigateSection} />;
     case "products":
-      return <ProductResponse onSelectPrompt={onSelectPrompt} onNavigateSection={onNavigateSection} />;
+      return <ProductResponse onNavigateSection={onNavigateSection} />;
     case "pipeline":
-      return <PipelineResponse onSelectPrompt={onSelectPrompt} onNavigateSection={onNavigateSection} />;
+      return <PipelineResponse onNavigateSection={onNavigateSection} />;
     case "journey":
-      return <JourneyResponse onSelectPrompt={onSelectPrompt} onNavigateSection={onNavigateSection} />;
+      return <JourneyResponse onNavigateSection={onNavigateSection} />;
     case "contact":
-      return <ContactResponse onSelectPrompt={onSelectPrompt} onNavigateSection={onNavigateSection} />;
+      return <ContactResponse onNavigateSection={onNavigateSection} />;
     case "unknown":
     default:
       return <UnknownResponse onSelectPrompt={onSelectPrompt} />;

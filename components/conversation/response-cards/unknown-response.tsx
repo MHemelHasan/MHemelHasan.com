@@ -1,37 +1,40 @@
 "use client";
 
-import { PromptSuggestion } from "@/types/conversation";
 import { initialPromptSuggestions } from "@/data/prompts";
-import { Sparkles } from "lucide-react";
+import { PromptSuggestion } from "@/types/conversation";
+import { ArrowRight } from "lucide-react";
+import { ResponseIntro, ResponseSection } from "./response-primitives";
 
 interface UnknownResponseProps {
   onSelectPrompt: (prompt: PromptSuggestion) => void;
 }
 
 export function UnknownResponse({ onSelectPrompt }: UnknownResponseProps) {
-  return (
-    <div className="space-y-4 text-text-primary">
-      <p className="text-sm sm:text-base leading-relaxed text-text-primary">
-        I didn&apos;t quite match that exact phrase, but I can share details about my active venture (Social AI), commercial products shipped at Themefic, engineering process, or career journey.
-      </p>
+  const suggestions = initialPromptSuggestions.filter((prompt) =>
+    ["about-me", "social-ai", "show-products", "how-build", "lets-talk"].includes(prompt.id)
+  );
 
-      <div className="space-y-2">
-        <span className="block text-xs font-mono font-semibold uppercase tracking-wider text-text-muted">
-          Suggested topics:
-        </span>
-        <div className="flex flex-wrap gap-2">
-          {initialPromptSuggestions.map((prompt) => (
+  return (
+    <div className="space-y-6 text-text-primary">
+      <ResponseIntro>
+        I couldn&apos;t match that phrase to a portfolio topic. Try one of these paths into the work.
+      </ResponseIntro>
+
+      <ResponseSection label="Suggested topics">
+        <div className="border-t border-border-subtle">
+          {suggestions.map((prompt) => (
             <button
               key={prompt.id}
               type="button"
               onClick={() => onSelectPrompt(prompt)}
-              className="cursor-pointer rounded-full border border-border-interactive bg-surface-card px-3.5 py-1.5 text-xs font-medium text-text-secondary transition-all hover:border-accent-sky hover:bg-surface-nested hover:text-text-primary active:scale-95 shadow-sm"
+              className="group flex min-h-12 w-full cursor-pointer items-center justify-between border-b border-border-subtle text-left text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
             >
               {prompt.label}
+              <ArrowRight className="h-4 w-4 text-text-muted transition-colors group-hover:text-accent-sky" aria-hidden="true" />
             </button>
           ))}
         </div>
-      </div>
+      </ResponseSection>
     </div>
   );
 }
