@@ -1,0 +1,12 @@
+@theme {
+  --color-brand: #315CF5;
+  --color-brand-hover: #264AC9;
+  --color-brand-soft: #EEF2FF;
+  --color-ink: #111318;
+  --color-muted: #646A73;
+  --color-background: #FAF9F6;
+  --color-surface: #FFFFFF;
+  --color-border: #E6E2DC;
+  --font-sans: "Geist Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+}

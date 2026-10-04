@@ -1,5 +1,10 @@
 import { ProductRecord } from "@/types/product";
 
+export interface VentureCapabilityGroup {
+  title: string;
+  description: string;
+}
+
 export const socialAIVenture: ProductRecord = {
   id: "social-ai",
   slug: "social-ai",
@@ -52,6 +57,25 @@ export const socialAIVenture: ProductRecord = {
   ],
   publicUrl: null, // Private Beta: URL provided upon public launch
 };
+
+export const socialAICapabilityGroups: VentureCapabilityGroup[] = [
+  {
+    title: "Research intelligence",
+    description: "Topic brainstorming, RSS-based research, and public competitor content monitoring.",
+  },
+  {
+    title: "Brand-aware creation",
+    description: "Custom brand voice and writing style configuration brought together with content generation.",
+  },
+  {
+    title: "Multi-channel publishing",
+    description: "Drafting, visual scheduling, and automated publishing across LinkedIn, Facebook Pages, and X / Twitter.",
+  },
+  {
+    title: "AI model connectivity",
+    description: "Direct connectivity with compatible AI model APIs.",
+  },
+];
 
 
 export const supportAIVenture: ProductRecord = {

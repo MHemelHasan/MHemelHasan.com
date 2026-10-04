@@ -1,32 +1,59 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { personalProfile } from "@/data/profile";
 
-const inter = Inter({
+const geistSans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mhemelhasan.com"),
   title: `${personalProfile.name} — ${personalProfile.roleTitle}`,
   description: personalProfile.tagline,
   icons: {
-    icon: "/favicons/favicon-32x32.png",
-    apple: "/favicons/apple-icon-180x180.png",
+    icon: [
+      {
+        url: "/brand/favicon/favicon-16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+      {
+        url: "/brand/favicon/favicon-32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+    shortcut: "/brand/favicon/favicon.ico",
+    apple: "/brand/favicon/apple-touch-icon.png",
   },
   openGraph: {
     title: `${personalProfile.name} — ${personalProfile.roleTitle}`,
     description: personalProfile.tagline,
     type: "website",
     locale: "en_US",
+    images: [
+      {
+        url: "/brand/social/og-image-1200x630.png",
+        width: 1200,
+        height: 630,
+        alt: `${personalProfile.name} — ${personalProfile.roleTitle}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${personalProfile.name} — ${personalProfile.roleTitle}`,
+    description: personalProfile.tagline,
+    images: ["/brand/social/og-image-1200x630.png"],
   },
 };
 
@@ -39,7 +66,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <head>
         <script
@@ -72,4 +99,3 @@ export default function RootLayout({
     </html>
   );
 }
-

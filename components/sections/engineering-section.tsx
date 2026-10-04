@@ -1,148 +1,178 @@
 "use client";
 
+import { useState } from "react";
+import { ArrowDown, MessageSquareText } from "lucide-react";
 import { engineeringDomains } from "@/data/engineering";
-import {
-  Cpu,
-  Layers,
-  ShoppingBag,
-  Server,
-  Bot,
-  Terminal,
-  Palette,
-  CheckCircle2,
-  Workflow,
-  ArrowRight,
-} from "lucide-react";
 
 interface EngineeringSectionProps {
   onAskInConversation?: (query: string) => void;
 }
 
 export function EngineeringSection({ onAskInConversation }: EngineeringSectionProps) {
-  const getDomainIcon = (id: string) => {
-    switch (id) {
-      case "product-architecture":
-        return Cpu;
-      case "platform-ecosystems":
-        return Layers;
-      case "backend-apis":
-        return Server;
-      case "ai-integration":
-        return Bot;
-      case "commerce-systems":
-        return ShoppingBag;
-      case "infrastructure-tooling":
-        return Terminal;
-      case "interface-engineering":
-        return Palette;
-      default:
-        return Workflow;
-    }
-  };
+  const [activeDomainId, setActiveDomainId] = useState(engineeringDomains[0]?.id ?? "");
+  const activeIndex = Math.max(
+    0,
+    engineeringDomains.findIndex((domain) => domain.id === activeDomainId),
+  );
+  const activeDomain = engineeringDomains[activeIndex] ?? engineeringDomains[0];
 
-  const handleAsk = (title: string) => {
-    const query = `What is your experience with ${title}?`;
+  if (!activeDomain) return null;
+
+  const handleAsk = (query: string) => {
     if (onAskInConversation) {
       onAskInConversation(query);
-    } else {
-      const el = document.getElementById("conversation");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      return;
     }
+
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="engineering" className="mt-24 sm:mt-32 scroll-mt-24">
-      {/* Section Header */}
-      <div className="flex flex-col items-start md:items-center md:text-center max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-2 rounded-full border border-accent-sky/30 bg-accent-soft px-3.5 py-1 text-xs font-mono font-medium text-accent-sky">
-          <Cpu className="h-3.5 w-3.5" />
-          <span>Technical Depth & Architecture</span>
-        </div>
-        <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
-          Engineering Depth
-        </h2>
-        <p className="mt-3.5 text-base sm:text-lg text-text-secondary leading-relaxed">
-          Competence organized around system context rather than arbitrary tool checklists — from high-level domain boundaries down to Linux servers and runtime iframes.
-        </p>
-      </div>
+    <section id="engineering" className="scroll-mt-24 border-b border-border-subtle bg-canvas">
+      <div className="mx-auto max-w-7xl px-5 pb-20 pt-16 sm:px-8 sm:pb-24 sm:pt-20 lg:px-12 lg:pb-28 lg:pt-24">
+        <header className="grid gap-8 border-b-2 border-text-primary pb-10 min-[1100px]:grid-cols-12 min-[1100px]:gap-14 min-[1100px]:pb-12">
+          <div className="min-[1100px]:col-span-5">
+            <p className="text-sm font-semibold text-accent-sky">Systems, platforms, and infrastructure</p>
+            <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-normal text-text-primary sm:text-5xl lg:text-6xl">
+              Engineering Depth
+            </h2>
+          </div>
 
-      {/* Domain Cards Grid */}
-      <div className="mt-12 lg:mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
-        {engineeringDomains.map((domain) => {
-          const Icon = getDomainIcon(domain.id);
-          return (
+          <div className="min-[1100px]:col-span-7 min-[1100px]:pt-1">
+            <p className="max-w-3xl text-xl leading-8 text-text-primary sm:text-2xl sm:leading-9">
+              The technical decisions beneath reliable product software.
+            </p>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-text-secondary">
+              Engineering capability organized by system context, with tools shown as supporting evidence rather than the story itself.
+            </p>
+          </div>
+        </header>
+
+        <div className="mt-10 grid items-start gap-10 sm:mt-12 min-[1100px]:grid-cols-12 min-[1100px]:gap-14">
+          <nav
+            aria-label="Engineering domains"
+            className="order-1 min-[1100px]:order-2 min-[1100px]:col-span-4 min-[1100px]:col-start-9 min-[1100px]:row-start-1"
+          >
+            <div className="flex items-end justify-between border-b border-text-primary pb-4">
+              <h3 className="text-lg font-semibold text-text-primary">Engineering domains</h3>
+              <span className="font-mono text-xs text-text-muted">07 areas</span>
+            </div>
+
             <div
-              key={domain.id}
-              className="rounded-3xl border border-border-interactive bg-surface-card p-6 sm:p-7 shadow-sm transition-all duration-300 hover:border-accent-sky/50 hover:shadow-md flex flex-col justify-between"
+              role="group"
+              aria-label="Select an engineering domain"
+              className="grid grid-cols-2 min-[640px]:grid-cols-3 min-[1100px]:!grid-cols-1"
             >
-              <div>
-                {/* Domain Header */}
-                <div className="flex items-start justify-between gap-3 border-b border-border-subtle pb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border-interactive bg-surface-nested text-accent-sky shadow-sm">
-                      <Icon className="h-5 w-5" />
-                    </div>
+              {engineeringDomains.map((domain, index) => {
+                const isActive = domain.id === activeDomain.id;
+
+                return (
+                  <button
+                    key={domain.id}
+                    id={`engineering-domain-${domain.id}`}
+                    type="button"
+                    aria-pressed={isActive}
+                    aria-controls="engineering-domain-detail"
+                    onClick={() => setActiveDomainId(domain.id)}
+                    className={`grid min-h-20 grid-cols-[1.75rem_minmax(0,1fr)] items-center gap-2 border-b border-border-subtle py-3 pr-2 text-left transition-colors sm:pr-3 min-[1100px]:min-h-16 min-[1100px]:pr-0 ${
+                      isActive
+                        ? "border-l-2 border-l-accent-sky bg-accent-soft pl-3"
+                        : "border-l-2 border-l-transparent pl-3 hover:bg-surface-nested/70"
+                    }`}
+                  >
+                    <span className="font-mono text-xs text-accent-sky">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[13px] font-semibold leading-5 text-text-primary sm:text-sm">
+                      {domain.title}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </nav>
+
+          <article
+            id="engineering-domain-detail"
+            role="region"
+            aria-labelledby={`engineering-domain-${activeDomain.id}`}
+            aria-live="polite"
+            className="order-2 border-t-2 border-text-primary pt-7 min-[1100px]:order-1 min-[1100px]:col-span-8 min-[1100px]:col-start-1 min-[1100px]:row-start-1 min-[1100px]:border-t-0 min-[1100px]:pt-0"
+          >
+            <div className="border-b border-border-subtle pb-7">
+              <p className="font-mono text-xs text-accent-sky">
+                Domain {String(activeIndex + 1).padStart(2, "0")} / {String(engineeringDomains.length).padStart(2, "0")}
+              </p>
+              <h3 className="mt-3 max-w-4xl text-3xl font-semibold leading-tight text-text-primary sm:text-4xl lg:text-5xl">
+                {activeDomain.title}
+              </h3>
+              <p className="mt-4 max-w-3xl text-xl font-medium leading-8 text-text-primary">
+                {activeDomain.tagline}
+              </p>
+              <p className="mt-4 max-w-3xl text-base leading-7 text-text-secondary">
+                {activeDomain.description}
+              </p>
+            </div>
+
+            <div>
+              <div className="flex items-end justify-between border-b border-border-subtle py-5">
+                <h4 className="text-sm font-semibold text-text-primary">Engineering focus</h4>
+                <span className="font-mono text-xs text-text-muted">
+                  {String(activeDomain.capabilities.length).padStart(2, "0")} decision areas
+                </span>
+              </div>
+
+              {activeDomain.capabilities.map((capability, index) => (
+                <section
+                  key={capability.title}
+                  className="grid gap-4 border-b border-border-subtle py-6 sm:grid-cols-[minmax(0,1.15fr)_minmax(14rem,0.85fr)] sm:gap-8"
+                >
+                  <div className="grid grid-cols-[2rem_minmax(0,1fr)] gap-3">
+                    <span className="pt-1 font-mono text-xs text-accent-sky">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                     <div>
-                      <h3 className="text-lg font-bold tracking-tight text-text-primary">
-                        {domain.title}
-                      </h3>
-                      <p className="text-xs text-text-muted mt-0.5 line-clamp-1">
-                        {domain.tagline}
-                      </p>
+                      <h5 className="text-base font-semibold text-text-primary">{capability.title}</h5>
+                      <p className="mt-2 text-sm leading-6 text-text-secondary">{capability.description}</p>
                     </div>
                   </div>
-                </div>
 
-                {/* Description */}
-                <p className="mt-4 text-xs sm:text-sm text-text-secondary leading-relaxed">
-                  {domain.description}
-                </p>
-
-                {/* Capabilities list */}
-                <div className="mt-5 space-y-3.5">
-                  {domain.capabilities.map((cap) => (
-                    <div
-                      key={cap.title}
-                      className="rounded-xl border border-border-subtle bg-surface-nested p-3.5"
-                    >
-                      <h4 className="text-xs font-bold text-text-primary flex items-center gap-1.5">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-accent-sky shrink-0" />
-                        <span>{cap.title}</span>
-                      </h4>
-                      <p className="mt-1 text-xs text-text-secondary leading-relaxed">
-                        {cap.description}
-                      </p>
-
-                      {/* Verified Technologies in Context */}
-                      <div className="mt-2.5 flex flex-wrap gap-1.5">
-                        {cap.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="rounded-md border border-border-subtle bg-surface-card px-2 py-0.5 text-[11px] font-mono text-text-muted"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Card Footer: Quick Ask */}
-              <div className="mt-5 pt-3 border-t border-border-subtle flex justify-end">
-                <button
-                  type="button"
-                  onClick={() => handleAsk(domain.title)}
-                  className="inline-flex cursor-pointer items-center gap-1 text-xs font-medium text-accent-sky hover:underline"
-                >
-                  <span>Ask about this domain</span>
-                  <ArrowRight className="h-3 w-3" />
-                </button>
-              </div>
+                  <div className="sm:border-l sm:border-border-subtle sm:pl-8">
+                    <p className="text-xs font-medium text-text-muted">Patterns &amp; technical evidence</p>
+                    <p className="mt-2 font-mono text-xs leading-6 text-text-secondary">
+                      {capability.technologies.join(" · ")}
+                    </p>
+                  </div>
+                </section>
+              ))}
             </div>
-          );
-        })}
+
+            <button
+              type="button"
+              onClick={() => handleAsk(`What is your experience with ${activeDomain.title}?`)}
+              className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-accent-sky text-sm font-semibold text-accent-sky transition-colors hover:text-text-primary"
+            >
+              <MessageSquareText className="h-4 w-4" aria-hidden="true" />
+              Ask about this domain
+            </button>
+          </article>
+        </div>
+
+        <div className="mt-16 flex flex-col gap-5 border-t border-border-interactive pt-7 sm:flex-row sm:items-end sm:justify-between lg:mt-20">
+          <div>
+            <p className="text-sm font-semibold text-accent-sky">Systems, then trajectory</p>
+            <p className="mt-2 max-w-2xl text-lg leading-7 text-text-primary">
+              The journey below traces how this technical responsibility developed over time.
+            </p>
+          </div>
+          <a
+            href="#journey"
+            className="inline-flex min-h-11 items-center gap-2 self-start text-sm font-semibold text-text-primary transition-colors hover:text-accent-sky sm:self-auto"
+          >
+            Continue to Builder Journey
+            <ArrowDown className="h-4 w-4 text-accent-sky" aria-hidden="true" />
+          </a>
+        </div>
       </div>
     </section>
   );

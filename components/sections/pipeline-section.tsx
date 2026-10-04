@@ -1,241 +1,168 @@
 "use client";
 
 import { useState } from "react";
-import { pipelineStages } from "@/data/pipeline";
-import {
-  GitFork,
-  ArrowRight,
-  ArrowLeft,
-  HelpCircle,
-  PackageCheck,
-  ShieldAlert,
-  Lightbulb,
-  MessageSquareText,
-  Workflow,
-} from "lucide-react";
+import { ArrowDown, MessageSquareText } from "lucide-react";
+import { pipelineStageHomepageCopy, pipelineStages } from "@/data/pipeline";
 
 interface PipelineSectionProps {
   onAskInConversation?: (query: string) => void;
 }
 
 export function PipelineSection({ onAskInConversation }: PipelineSectionProps) {
-  const [activeStageIndex, setActiveStageIndex] = useState<number>(0);
-  const currentStage = pipelineStages[activeStageIndex];
+  const [activeStageId, setActiveStageId] = useState(pipelineStages[0]?.id ?? "");
+  const activeIndex = Math.max(0, pipelineStages.findIndex((stage) => stage.id === activeStageId));
+  const activeStage = pipelineStages[activeIndex] ?? pipelineStages[0];
 
-  const handleNext = () => {
-    setActiveStageIndex((prev) => (prev + 1) % pipelineStages.length);
-  };
+  if (!activeStage) return null;
 
-  const handlePrev = () => {
-    setActiveStageIndex((prev) => (prev - 1 + pipelineStages.length) % pipelineStages.length);
-  };
-
-  const handleAsk = (stageTitle: string) => {
-    const query = `Tell me about your ${stageTitle} process`;
+  const handleAsk = (query: string) => {
     if (onAskInConversation) {
       onAskInConversation(query);
-    } else {
-      const el = document.getElementById("conversation");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      return;
     }
+
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="how-i-build" className="mt-24 sm:mt-32 scroll-mt-24">
-      {/* Section Header */}
-      <div className="flex flex-col items-start md:items-center md:text-center max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-2 rounded-full border border-purple-500/30 bg-purple-500/10 px-3.5 py-1 text-xs font-mono font-medium text-purple-600 dark:text-purple-400">
-          <GitFork className="h-3.5 w-3.5" />
-          <span>Product Engineering Pipeline</span>
-        </div>
-        <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-text-primary sm:text-4xl lg:text-5xl">
-          How I Build
-        </h2>
-        <p className="mt-3.5 text-base sm:text-lg text-text-secondary leading-relaxed">
-          Turning ideas into resilient software through a disciplined 8-stage engineering process — reducing risk early, modeling clean boundaries, and executing with craft.
-        </p>
-      </div>
-
-      {/* Interactive Desktop Stage Navigator (8 Stages) */}
-      <div className="mt-12 lg:mt-16 rounded-3xl border border-border-interactive bg-surface-card p-6 sm:p-8 lg:p-10 shadow-xl shadow-slate-900/5">
-        {/* Horizontal Stepper (Desktop/Tablet) */}
-        <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-8 gap-2 border-b border-border-subtle pb-6">
-          {pipelineStages.map((stage, idx) => {
-            const isActive = activeStageIndex === idx;
-            return (
-              <button
-                key={stage.id}
-                type="button"
-                onClick={() => setActiveStageIndex(idx)}
-                className={`group flex flex-col items-start p-3 rounded-2xl border text-left transition-all cursor-pointer ${
-                  isActive
-                    ? "border-purple-500/60 bg-purple-500/10 shadow-sm ring-1 ring-purple-500/30"
-                    : "border-border-interactive bg-surface-nested hover:border-purple-500/40 hover:bg-surface-card"
-                }`}
-              >
-                <span
-                  className={`text-xs font-mono font-bold transition-colors ${
-                    isActive ? "text-purple-600 dark:text-purple-400" : "text-text-muted group-hover:text-purple-500"
-                  }`}
-                >
-                  {stage.stepNumber}
-                </span>
-                <span
-                  className={`mt-1.5 text-xs font-bold leading-tight line-clamp-2 transition-colors ${
-                    isActive ? "text-text-primary" : "text-text-secondary group-hover:text-text-primary"
-                  }`}
-                >
-                  {stage.title}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Mobile Horizontal Scrollable Segmented Track */}
-        <div className="flex md:hidden items-center justify-between gap-3 border-b border-border-subtle pb-4">
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-bold text-purple-600 dark:text-purple-400">
-              Stage {currentStage.stepNumber} of 08
-            </span>
-            <span className="text-border-subtle">•</span>
-            <span className="text-xs font-bold text-text-primary truncate max-w-[170px]">
-              {currentStage.title}
-            </span>
+    <section id="how-i-build" className="scroll-mt-24 border-y border-border-subtle bg-surface-card">
+      <div className="mx-auto max-w-7xl px-5 pb-20 pt-16 sm:px-8 sm:pb-24 sm:pt-20 lg:px-12 lg:pb-28 lg:pt-24">
+        <header className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-5">
+            <p className="text-sm font-semibold text-accent-sky">The operating method behind the work</p>
+            <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-normal text-text-primary sm:text-5xl lg:text-6xl">
+              How I Build
+            </h2>
           </div>
 
-          <div className="flex items-center gap-1.5">
-            <button
-              type="button"
-              onClick={handlePrev}
-              aria-label="Previous Stage"
-              className="p-1.5 rounded-lg border border-border-interactive bg-surface-nested text-text-secondary hover:text-text-primary active:scale-95"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </button>
-            <button
-              type="button"
-              onClick={handleNext}
-              aria-label="Next Stage"
-              className="p-1.5 rounded-lg border border-border-interactive bg-surface-nested text-text-secondary hover:text-text-primary active:scale-95"
-            >
-              <ArrowRight className="h-4 w-4" />
-            </button>
+          <div className="lg:col-span-7 lg:pt-1">
+            <p className="max-w-3xl text-xl leading-8 text-text-primary sm:text-2xl sm:leading-9">
+              Product decisions and engineering decisions move together, from platform constraints to production feedback.
+            </p>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-text-secondary">
+              Eight stages reduce risk early, define clear boundaries, and connect launch to feedback.
+            </p>
           </div>
-        </div>
+        </header>
 
-        {/* Active Stage Detail Showcase */}
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Main Content (8 cols) */}
-          <div className="lg:col-span-8 space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-3">
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 font-mono text-sm font-bold border border-purple-500/30">
-                  {currentStage.stepNumber}
-                </span>
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-text-primary">
-                    {currentStage.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-text-muted mt-0.5">
-                    {currentStage.shortDesc}
-                  </p>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => handleAsk(currentStage.title)}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-border-interactive bg-surface-nested px-3.5 py-1.5 text-xs font-medium text-text-primary transition-all hover:border-purple-500/50 hover:bg-surface-interactive hover:text-purple-600 dark:hover:text-purple-400 active:scale-95"
-              >
-                <MessageSquareText className="h-3.5 w-3.5 text-purple-600 dark:text-purple-400" />
-                <span>Ask about this stage</span>
-              </button>
+        <div className="mt-12 border-t-2 border-text-primary pt-8 sm:mt-16 lg:grid lg:grid-cols-12 lg:gap-14 lg:pt-10">
+          <div className="lg:col-span-5">
+            <div className="flex items-center justify-between border-b border-border-subtle pb-4">
+              <h3 className="text-lg font-semibold text-text-primary">Decision-to-delivery sequence</h3>
+              <span className="font-mono text-xs text-text-muted">08 stages</span>
             </div>
 
-            {/* Questions, Deliverables, & Risk Avoidance Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Question Answered */}
-              <div className="rounded-2xl border border-border-interactive bg-surface-nested p-4.5">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-accent-sky mb-2">
-                  <HelpCircle className="h-4 w-4" />
-                  <span>Core Question</span>
-                </div>
-                <p className="text-sm font-medium text-text-primary leading-relaxed">
-                  &ldquo;{currentStage.questionAnswered}&rdquo;
-                </p>
-              </div>
-
-              {/* Deliverable */}
-              <div className="rounded-2xl border border-border-interactive bg-surface-nested p-4.5">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-2">
-                  <PackageCheck className="h-4 w-4" />
-                  <span>Key Deliverable</span>
-                </div>
-                <p className="text-sm font-medium text-text-primary leading-relaxed">
-                  {currentStage.deliverable}
-                </p>
-              </div>
+            <div className="h-1 bg-surface-nested" aria-hidden="true">
+              <div
+                className="h-full bg-accent-sky"
+                style={{ width: `${((activeIndex + 1) / pipelineStages.length) * 100}%` }}
+              />
             </div>
 
-            {/* Common Risks Avoided */}
-            {currentStage.commonRisksAvoided && (
-              <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-4.5">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-1.5">
-                  <ShieldAlert className="h-4 w-4" />
-                  <span>Mistakes & Pitfalls Prevented</span>
-                </div>
-                <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
-                  {currentStage.commonRisksAvoided}
-                </p>
-              </div>
-            )}
+            <div role="group" aria-label="Product engineering stages">
+              {pipelineStages.map((stage) => {
+                const isActive = stage.id === activeStage.id;
+
+                return (
+                  <button
+                    key={stage.id}
+                    id={`pipeline-stage-${stage.id}`}
+                    type="button"
+                    aria-pressed={isActive}
+                    aria-controls="pipeline-stage-detail"
+                    onClick={() => setActiveStageId(stage.id)}
+                    className={`grid min-h-14 w-full grid-cols-[2.25rem_minmax(0,1fr)_auto] items-center gap-3 border-b border-border-subtle text-left transition-colors ${
+                      isActive ? "bg-accent-soft px-4" : "hover:bg-surface-nested/70"
+                    }`}
+                  >
+                    <span className="font-mono text-xs text-accent-sky">{stage.stepNumber}</span>
+                    <span className="text-sm font-semibold text-text-primary sm:text-base">{stage.title}</span>
+                    <span
+                      className={`h-2.5 w-2.5 border border-accent-sky ${isActive ? "bg-accent-sky" : "bg-transparent"}`}
+                      aria-hidden="true"
+                    />
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Side Context & Engineering Philosophy (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
-            <div className="rounded-2xl border border-border-interactive bg-surface-nested p-5">
-              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 mb-2">
-                <Lightbulb className="h-4 w-4" />
-                <span>Guiding Mindset</span>
+          <article
+            id="pipeline-stage-detail"
+            role="region"
+            aria-labelledby={`pipeline-stage-${activeStage.id}`}
+            aria-live="polite"
+            className="mt-10 lg:col-span-7 lg:mt-0"
+          >
+            <div className="flex items-start justify-between gap-5 border-b border-border-subtle pb-6">
+              <div>
+                <p className="font-mono text-xs text-accent-sky">Stage {activeStage.stepNumber} of 08</p>
+                <h3 className="mt-3 text-3xl font-semibold leading-tight text-text-primary sm:text-4xl">{activeStage.title}</h3>
+                <p className="mt-3 max-w-2xl text-base leading-7 text-text-secondary">{activeStage.shortDesc}</p>
               </div>
-              <p className="text-xs sm:text-sm font-medium italic text-text-primary leading-relaxed">
-                &ldquo;{currentStage.keyMindset}&rdquo;
+              <span className="hidden font-mono text-6xl font-medium leading-none text-accent-sky/15 sm:block" aria-hidden="true">
+                {activeStage.stepNumber}
+              </span>
+            </div>
+
+            <div className="border-b border-border-subtle py-7">
+              <p className="text-sm font-semibold text-accent-sky">The question this stage answers</p>
+              <p className="mt-3 max-w-3xl text-2xl font-medium leading-9 text-text-primary">
+                {activeStage.questionAnswered}
               </p>
             </div>
 
-            {currentStage.realContext && (
-              <div className="rounded-2xl border border-border-interactive bg-surface-nested p-5">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-accent-sky mb-2">
-                  <Workflow className="h-4 w-4" />
-                  <span>Applied Reality</span>
-                </div>
-                <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
-                  {currentStage.realContext}
+            <div className="grid border-b border-border-subtle sm:grid-cols-2">
+              <div className="py-7 sm:pr-8">
+                <h4 className="text-sm font-semibold text-text-primary">Working deliverable</h4>
+                <p className="mt-3 text-base font-medium leading-7 text-text-primary">{activeStage.deliverable}</p>
+              </div>
+              <div className="border-t border-border-subtle py-7 sm:border-l sm:border-t-0 sm:pl-8">
+                <h4 className="text-sm font-semibold text-text-primary">Applied reality</h4>
+                <p className="mt-3 text-sm leading-6 text-text-secondary">
+                  {pipelineStageHomepageCopy[activeStage.id]?.appliedReality ?? activeStage.realContext}
                 </p>
               </div>
-            )}
-
-            {/* Navigation buttons */}
-            <div className="pt-2 flex items-center justify-between gap-3">
-              <button
-                type="button"
-                onClick={handlePrev}
-                className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-border-interactive bg-surface-card py-2 text-xs font-medium text-text-secondary hover:text-text-primary hover:border-border-interactive/80 transition-all cursor-pointer active:scale-95"
-              >
-                <ArrowLeft className="h-3.5 w-3.5" />
-                <span>Previous</span>
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-purple-500/40 bg-purple-500/10 py-2 text-xs font-semibold text-purple-600 dark:text-purple-400 hover:bg-purple-500/20 transition-all cursor-pointer active:scale-95"
-              >
-                <span>Next Stage</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </button>
             </div>
+
+            <div className="grid gap-6 border-b border-border-subtle py-7 sm:grid-cols-[0.78fr_1.22fr] sm:gap-8">
+              <div className="border-l-2 border-accent-sky pl-4">
+                <h4 className="text-sm font-semibold text-text-primary">Guiding mindset</h4>
+                <p className="mt-2 text-base font-medium leading-7 text-text-primary">{activeStage.keyMindset}</p>
+              </div>
+              <div>
+                <h4 className="text-sm font-semibold text-text-primary">Risk reduced before it compounds</h4>
+                <p className="mt-2 text-sm leading-6 text-text-secondary">
+                  {pipelineStageHomepageCopy[activeStage.id]?.riskReduced ?? activeStage.commonRisksAvoided}
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => handleAsk(`Tell me about your ${activeStage.title} process`)}
+              className="mt-6 inline-flex min-h-11 items-center gap-2 border-b border-accent-sky text-sm font-semibold text-accent-sky transition-colors hover:text-text-primary"
+            >
+              <MessageSquareText className="h-4 w-4" aria-hidden="true" />
+              Ask about this stage
+            </button>
+          </article>
+        </div>
+
+        <div className="mt-16 flex flex-col gap-5 border-t border-border-interactive pt-7 sm:flex-row sm:items-end sm:justify-between lg:mt-20">
+          <div>
+            <p className="text-sm font-semibold text-accent-sky">Method, then depth</p>
+            <p className="mt-2 max-w-2xl text-lg leading-7 text-text-primary">
+              The operating sequence is supported by the architecture, systems, and platform engineering below.
+            </p>
           </div>
+          <a
+            href="#engineering"
+            className="inline-flex min-h-11 items-center gap-2 self-start text-sm font-semibold text-text-primary transition-colors hover:text-accent-sky sm:self-auto"
+          >
+            Continue to Engineering Depth
+            <ArrowDown className="h-4 w-4 text-accent-sky" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>

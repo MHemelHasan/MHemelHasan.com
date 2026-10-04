@@ -91,3 +91,42 @@ export const pipelineStages: PipelineStage[] = [
   },
 ];
 
+interface PipelineStageHomepageCopy {
+  appliedReality: string;
+  riskReduced: string;
+}
+
+export const pipelineStageHomepageCopy: Record<string, PipelineStageHomepageCopy> = {
+  research: {
+    appliedReality: "Platform app constraints shape the architecture before implementation.",
+    riskReduced: "Unsupported APIs, marketplace conflicts, and immovable rate limits.",
+  },
+  "product-rd": {
+    appliedReality: "Authentication, webhook, and iframe spikes test feasibility early.",
+    riskReduced: "Weeks committed to mechanics that fail under production conditions.",
+  },
+  architecture: {
+    appliedReality: "Core logic stays separate from platform connectors and interfaces.",
+    riskReduced: "Coupling that turns one external API change into a system-wide failure.",
+  },
+  "data-model": {
+    appliedReality: "Explicit state transitions keep records auditable and migrations manageable.",
+    riskReduced: "Corrupt data, race conditions, orphaned records, and rigid schemas.",
+  },
+  backend: {
+    appliedReality: "Idempotent handlers, rate limits, token refresh, and structured errors.",
+    riskReduced: "Duplicate jobs, security gaps, and failures that surface only under load.",
+  },
+  integrations: {
+    appliedReality: "Signed webhooks, queues, backoff, and token refresh absorb partner failures.",
+    riskReduced: "Dropped events, retry loops, and unverified external payloads.",
+  },
+  interface: {
+    appliedReality: "Tokens, keyboard access, responsive behavior, and clear feedback ship together.",
+    riskReduced: "Layout shifts, inaccessible states, and interfaces users cannot trust.",
+  },
+  launch: {
+    appliedReality: "Telemetry and health signals turn release feedback into focused iteration.",
+    riskReduced: "Blind releases, missed regressions, and slow production recovery.",
+  },
+};

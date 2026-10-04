@@ -1,15 +1,22 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { personalProfile } from "@/data/profile";
 import { MessageSquareText, Menu, X } from "lucide-react";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 
 interface HeaderProps {
   onStartConversation?: () => void;
+  homeHref?: string;
+  navigationBasePath?: string;
 }
 
-export function Header({ onStartConversation }: HeaderProps) {
+export function Header({
+  onStartConversation,
+  homeHref = "#top",
+  navigationBasePath = "",
+}: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
@@ -36,23 +43,37 @@ export function Header({ onStartConversation }: HeaderProps) {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 sm:px-6">
         {/* Brand identity */}
         <a
-          href="#top"
-          className="group flex items-center gap-2.5 text-base font-bold tracking-tight text-text-primary transition-colors hover:text-accent-sky"
+          href={homeHref}
+          className="flex h-8 items-center transition-opacity hover:opacity-80"
           aria-label={`${personalProfile.name} home`}
         >
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-border-interactive bg-surface-card text-xs font-mono font-bold text-accent-sky transition-all group-hover:border-accent-sky/50 group-hover:shadow-[0_0_12px_rgba(56,189,248,0.25)]">
-            MH
-          </span>
-          <span className="text-sm font-semibold sm:text-base">{personalProfile.name}</span>
+          <Image
+            src="/brand/logo/m-hemel-hasan-logo-horizontal.svg"
+            alt=""
+            aria-hidden="true"
+            width={650}
+            height={120}
+            priority
+            className="brand-logo-light h-7 w-auto sm:h-8"
+          />
+          <Image
+            src="/brand/logo/m-hemel-hasan-logo-horizontal-on-dark.svg"
+            alt=""
+            aria-hidden="true"
+            width={650}
+            height={120}
+            priority
+            className="brand-logo-dark h-7 w-auto sm:h-8"
+          />
         </a>
 
         {/* Desktop Static Section Navigation */}
-        <nav className="hidden md:flex items-center gap-6" aria-label="Main Navigation">
+        <nav className="hidden min-[900px]:flex items-center gap-6" aria-label="Main Navigation">
           {navLinks.map((link) => (
             <a
               key={link.label}
-              href={link.href}
-              className="text-xs lg:text-sm font-medium text-text-secondary transition-colors hover:text-accent-sky"
+              href={`${navigationBasePath}${link.href}`}
+              className="whitespace-nowrap text-xs lg:text-sm font-medium text-text-secondary transition-colors hover:text-accent-sky"
             >
               {link.label}
             </a>
@@ -66,17 +87,18 @@ export function Header({ onStartConversation }: HeaderProps) {
           <button
             type="button"
             onClick={handleStartConversation}
-            className="hidden sm:inline-flex cursor-pointer items-center gap-2 rounded-full border border-border-interactive bg-surface-card/90 px-3.5 py-1.5 text-xs font-medium text-text-primary shadow-sm backdrop-blur-sm transition-all hover:border-accent-sky/60 hover:bg-surface-interactive hover:text-accent-sky active:scale-95 sm:text-sm"
+            aria-label="Ask Hemel in a conversation"
+            className="hidden h-9 cursor-pointer items-center justify-center gap-2 whitespace-nowrap px-3 text-sm font-medium text-text-secondary transition-colors hover:text-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-canvas min-[900px]:inline-flex"
           >
-            <MessageSquareText className="h-3.5 w-3.5 text-accent-sky" />
-            <span>Start a Conversation</span>
+            <MessageSquareText className="h-4 w-4" aria-hidden="true" />
+            <span>Ask Hemel</span>
           </button>
 
           {/* Mobile menu toggle */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="inline-flex md:hidden p-2 rounded-xl border border-border-interactive bg-surface-card text-text-secondary hover:text-text-primary active:scale-95"
+            className="inline-flex min-[900px]:hidden p-2 rounded-xl border border-border-interactive bg-surface-card text-text-secondary hover:text-text-primary active:scale-95"
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle Navigation Menu"
           >
@@ -87,12 +109,12 @@ export function Header({ onStartConversation }: HeaderProps) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-border-subtle bg-canvas/95 backdrop-blur-lg px-4 pt-2 pb-6 space-y-3">
+        <div className="min-[900px]:hidden border-b border-border-subtle bg-canvas/95 backdrop-blur-lg px-4 pt-2 pb-6 space-y-3">
           <nav className="flex flex-col space-y-2">
             {navLinks.map((link) => (
               <a
                 key={link.label}
-                href={link.href}
+                href={`${navigationBasePath}${link.href}`}
                 onClick={handleLinkClick}
                 className="px-3 py-2 rounded-xl text-sm font-medium text-text-secondary hover:text-accent-sky hover:bg-surface-nested transition-colors"
               >
@@ -100,7 +122,7 @@ export function Header({ onStartConversation }: HeaderProps) {
               </a>
             ))}
             <a
-              href="#contact"
+              href={`${navigationBasePath}#contact`}
               onClick={handleLinkClick}
               className="px-3 py-2 rounded-xl text-sm font-medium text-text-secondary hover:text-accent-sky hover:bg-surface-nested transition-colors"
             >
@@ -112,10 +134,11 @@ export function Header({ onStartConversation }: HeaderProps) {
             <button
               type="button"
               onClick={handleStartConversation}
+              aria-label="Ask Hemel in a conversation"
               className="w-full inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-accent-sky/40 bg-accent-soft px-4 py-2.5 text-xs font-semibold text-accent-sky shadow-sm transition-all active:scale-95"
             >
-              <MessageSquareText className="h-3.5 w-3.5" />
-              <span>Start a Conversation</span>
+              <MessageSquareText className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>Ask Hemel</span>
             </button>
           </div>
         </div>
@@ -123,6 +146,3 @@ export function Header({ onStartConversation }: HeaderProps) {
     </header>
   );
 }
-
-
-
