@@ -18,7 +18,7 @@ export const socialAIVenture: ProductRecord = {
   typeLabel: "Personal Venture",
   isFeatured: true,
   summary:
-    "Social AI connects social channels to help users research trending topics, brainstorm ideas, generate content in custom brand voices, schedule, and automate publishing across platforms.",
+    "Social AI connects social channels to help users research trending topics, brainstorm ideas, generate content in custom brand voices, schedule, and automate publishing across platforms. Under the product workflow, PostgreSQL and Prisma support the relational data model, search, indexing, and query-heavy application flows, alongside secure authentication and compatible AI model integrations.",
   channels: ["LinkedIn", "Facebook Pages", "X / Twitter"],
   capabilities: [
     "Multi-channel connection (LinkedIn, Facebook Pages, X / Twitter)",
@@ -26,7 +26,8 @@ export const socialAIVenture: ProductRecord = {
     "Public competitor content monitoring",
     "Custom brand voice & writing style configuration",
     "Post drafting, visual scheduling, and automated publishing",
-    "Direct connectivity with compatible AI model APIs",
+    "Relational data modeling, indexing, and full-text search with PostgreSQL & Prisma",
+    "Secure authentication workflows and direct connectivity with compatible AI model APIs",
   ],
   workflowSteps: [
     {
@@ -73,7 +74,7 @@ export const socialAICapabilityGroups: VentureCapabilityGroup[] = [
   },
   {
     title: "AI model connectivity",
-    description: "Direct connectivity with compatible AI model APIs.",
+    description: "Direct connectivity with compatible AI model APIs, supported by PostgreSQL and Prisma for relational modeling, indexing, and search.",
   },
 ];
 

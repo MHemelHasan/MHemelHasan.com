@@ -43,14 +43,14 @@ export const journeyMilestones: JourneyMilestone[] = [
   },
   {
     id: "technical-lead",
-    yearPeriod: "2023 – Present",
+    yearPeriod: "Jun 2022 – Oct 2026",
     stageName: "Technical Leadership & Product R&D",
     roleTitle: "Technical Lead – Platform Apps & Product Engineering",
     organization: "Themefic",
     context:
-      "Leading technical architecture, product R&D, and engineering execution across Themefic's commercial product catalog (Shopify, Webflow, WordPress).",
-    evolutionShift: "Owning multi-platform technical strategy, code quality standards, team guidance, and deployment pipelines.",
-    technologies: ["Product R&D", "Cross-Platform Architecture", "Code Reviews", "VPS / Linux", "CI/CD"],
+      "Led technical architecture, product R&D, engineering standards, and platform delivery across Themefic's commercial product portfolio (Shopify, Webflow, WordPress), taking release and production infrastructure ownership.",
+    evolutionShift: "Expanding from product engineering into architecture, code quality standards, team guidance, and production infrastructure ownership across commercial products.",
+    technologies: ["Product R&D", "Cross-Platform Architecture", "Code Reviews", "Docker / Kubernetes", "CI/CD & VPS"],
   },
   {
     id: "founder-building",
@@ -61,6 +61,6 @@ export const journeyMilestones: JourneyMilestone[] = [
     context:
       "Designing and building proprietary AI software platforms — focusing on research automation, multi-channel social publishing, and brand voice intelligence in Private Beta.",
     evolutionShift: "Full-cycle venture building: from product vision and data flow architecture to multi-model AI orchestration and deployment.",
-    technologies: ["AI Model APIs", "Multi-Channel Orchestration", "Next.js", "TypeScript", "Venture Architecture"],
+    technologies: ["PostgreSQL / Prisma", "AI Model APIs", "Next.js", "TypeScript", "Venture Architecture"],
   },
 ];

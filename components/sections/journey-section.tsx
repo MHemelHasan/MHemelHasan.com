@@ -81,7 +81,7 @@ export function JourneySection() {
           <div className="lg:col-span-3">
             <p className="font-mono text-xs text-accent-sky">03 / 03</p>
             <p className="mt-3 text-sm font-semibold uppercase text-text-primary">Ownership</p>
-            <p className="mt-1 font-mono text-xs text-text-muted">2023 – Present</p>
+            <p className="mt-1 font-mono text-xs text-text-muted">2023 – 2026</p>
           </div>
 
           <div className="mt-6 lg:col-span-9 lg:mt-0">
@@ -89,7 +89,7 @@ export function JourneySection() {
               Product responsibility widened into technical leadership and venture building.
             </h3>
             <p className="mt-4 max-w-3xl text-base leading-7 text-text-secondary">
-              At Themefic, the role spans architecture, product R&amp;D, engineering standards, and delivery across a commercial platform portfolio. Building Social AI extends that same product-engineering discipline into founder-level ownership.
+              At Themefic, the role expanded into architecture, product R&amp;D, engineering standards, platform delivery, and production infrastructure ownership across a commercial product portfolio. Building Social AI extends that product-engineering discipline into founder-level ownership.
             </p>
 
             <div className="mt-8 grid gap-6 border-y border-border-subtle py-6 sm:grid-cols-2 sm:gap-8">

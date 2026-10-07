@@ -12,7 +12,7 @@ export function PipelineResponse({ onNavigateSection }: PipelineResponseProps) {
     <div className="space-y-6 text-text-primary">
       <ResponseIntro>
         My process starts before code: understand the product problem, platform constraints, and source
-        of truth, then carry those decisions through architecture, implementation, launch, and feedback.
+        of truth, then carry those decisions through architecture, implementation, code review, launch, and production operations.
       </ResponseIntro>
 
       <ResponseSection label="Decision-to-delivery sequence" title="Eight stages that reduce risk before it compounds">
@@ -32,7 +32,7 @@ export function PipelineResponse({ onNavigateSection }: PipelineResponseProps) {
 
       <p className="border-l-2 border-accent-sky pl-4 text-sm leading-6 text-text-secondary">
         The throughline is accountability: product decisions and engineering decisions stay connected
-        from the first constraint map to the production feedback loop.
+        from the first constraint map to the production feedback loop and operational ownership.
       </p>
 
       <ResponseSectionLink onClick={() => onNavigateSection?.("#how-i-build")}>

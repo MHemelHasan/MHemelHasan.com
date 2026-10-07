@@ -17,7 +17,7 @@ export function AboutResponse({ onNavigateSection }: AboutResponseProps) {
         I&apos;m <strong className="font-semibold">{personalProfile.name}</strong>, a{" "}
         <strong className="font-semibold">Product Engineer</strong>, Builder, and Founder based in{" "}
         {personalProfile.location}. I turn product ideas into production software, from research and
-        architecture through backend systems, integrations, and launch.
+        architecture through backend systems, integrations, launch, and production operations.
       </ResponseIntro>
 
       <ResponseSection label="Current work" title="Product engineering with widening ownership">
@@ -46,9 +46,9 @@ export function AboutResponse({ onNavigateSection }: AboutResponseProps) {
 
       <ResponseSection label="Throughline">
         <p className="text-sm leading-6 text-text-secondary">
-          Since 2015, the work has moved from interface craft to platform systems and end-to-end
-          product ownership. Founder is an expansion of the product-engineering role, not a replacement
-          for it.
+          Since 2015, the work has moved from interface craft to platform systems, production
+          infrastructure ownership, and end-to-end product delivery. Founder is an expansion of the
+          product-engineering discipline, not a replacement for it.
         </p>
       </ResponseSection>
 
