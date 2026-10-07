@@ -30,12 +30,12 @@ export const themeficProducts: ProductRecord[] = [
     problem:
       "Merchants need to increase average order value without complex discounting setups or invasive theme modifications that slow down storefront loading speeds.",
     contribution:
-      "Engineered the core product bundle mechanics, merchant configuration controls, and theme-independent storefront cart integration.",
+      "Engineered the core product bundle mechanics, deterministic discount business rules, merchant configuration controls, and maintainable storefront cart integration.",
     technicalScope: [
       "Shopify ecosystem application architecture",
       "Merchant administration and discount rule engines",
       "Storefront cart integration and cross-theme compatibility",
-      "High-performance client asset delivery",
+      "Performance-conscious client asset delivery and maintainable backend logic",
     ],
     outcome: "Commercial product shipped at Themefic for Shopify merchants.",
   },
@@ -43,7 +43,7 @@ export const themeficProducts: ProductRecord[] = [
     id: "instantio-wp",
     slug: "instantio-wp",
     title: "Instantio",
-    tagline: "High-converting multi-step and quick checkout system for WooCommerce.",
+    tagline: "Conversion-focused multi-step and quick checkout system for WooCommerce.",
     classification: "company_product",
     status: "commercial_shipped",
     statusLabel: "Commercial Release",
@@ -57,17 +57,17 @@ export const themeficProducts: ProductRecord[] = [
     typeLabel: "WordPress Plugin",
     isFeatured: true,
     summary:
-      "A fast, conversion-optimized checkout plugin for WooCommerce that eliminates cart abandonment through a streamlined slide-in cart and one-page checkout.",
+      "A conversion-focused checkout plugin for WooCommerce engineered to reduce purchase friction through a streamlined slide-in cart and modular one-page checkout.",
     capabilities: [
       "Slide-in floating cart and multi-step popup checkout",
       "WooCommerce integration and standard hook events",
-      "Modular front-end asset loading for speed optimization",
+      "Modular front-end asset loading for performance-conscious delivery",
       "Extensive WooCommerce theme compatibility",
     ],
     problem:
       "Default WooCommerce multi-page checkout flows introduce high friction and cart abandonment, especially for mobile and impulse buyers.",
     contribution:
-      "Led core plugin engineering, interactive cart flow development, modular asset bundling for performance, and WooCommerce compatibility.",
+      "Led core plugin architecture, REST/API layers, interactive checkout state management, performance-conscious asset loading, and cross-theme compatibility.",
     technicalScope: [
       "WordPress plugin and WooCommerce hook architecture",
       "Modular CSS/JS loading to minimize page weight",
@@ -97,19 +97,19 @@ export const themeficProducts: ProductRecord[] = [
       "A dedicated Webflow application enabling creators and marketing teams to connect their Webflow Designer projects directly with dynamic external workflows and data feeds.",
     capabilities: [
       "In-designer app interface for Webflow creators",
-      "External data feed connection and content synchronization",
-      "Intuitive visual mapping controls within Webflow",
-      "Lightweight execution inside the Webflow Designer",
+      "OAuth 2.0 platform authorization and secure authentication flows",
+      "External data feed connection, field mapping, and content synchronization",
+      "Platform API constraint handling, rate-limit awareness, and failure recovery",
     ],
     problem:
       "Webflow creators needed a frictionless way to synchronize dynamic external product data and content into their visual designer projects.",
     contribution:
-      "Engineered the Webflow app integration, designer user interface, and external data synchronization mechanisms.",
+      "Engineered the Webflow app integration, OAuth authorization flows, visual field mapping, designer interface, and failure-resilient synchronization logic within platform API constraints.",
     technicalScope: [
-      "Webflow platform app development",
-      "External data source connection and synchronization",
-      "In-designer creator experience and responsive feedback",
-      "Clean configuration state persistence",
+      "Webflow platform app development and OAuth 2.0 authentication",
+      "Field mapping and cross-platform data synchronization logic",
+      "Platform API rate-limit handling and graceful failure recovery",
+      "In-designer creator experience and configuration state persistence",
     ],
     outcome: "Commercial Webflow app shipped at Themefic.",
   },
@@ -135,9 +135,9 @@ export const themeficProducts: ProductRecord[] = [
     summary:
       "Empowers merchants to offer flexible Request-a-Quote workflows, custom pricing proposals, and automated email quote communications.",
     capabilities: [
-      "Request-a-Quote button injection across collections and product pages",
-      "Backend quote manager with PDF generation and custom pricing",
-      "Automated email notifications for buyers and merchants",
+      "Request-a-Quote button injection and merchant price-hiding controls",
+      "Backend quote manager with PDF generation, custom pricing, and form handling",
+      "Automated email notifications for buyers and administrative workflows",
     ],
     outcome: "Commercial product shipped at Themefic.",
   },
@@ -159,7 +159,7 @@ export const themeficProducts: ProductRecord[] = [
     typeLabel: "WordPress Plugin",
     isFeatured: false,
     summary:
-      "A suite of modular, lightweight custom blocks and widgets engineered for WordPress site builders prioritizing loading speed and visual flexibility.",
+      "A suite of modular, lightweight custom blocks and widgets engineered for WordPress site builders prioritizing loading efficiency and visual flexibility.",
     capabilities: [
       "Modular asset loading (loads CSS/JS strictly for blocks in use)",
       "Accessible block markup conforming to modern HTML5 standards",
@@ -189,7 +189,7 @@ export const themeficProducts: ProductRecord[] = [
     capabilities: [
       "Native Webflow e-commerce integration",
       "Custom bundle layouts and dynamic pricing calculators",
-      "Zero-dependency front-end script for maximum performance",
+      "Performance-conscious front-end scripts engineered for cross-theme compatibility",
     ],
     outcome: "Commercial product shipped at Themefic.",
   },

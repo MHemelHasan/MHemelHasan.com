@@ -10,13 +10,13 @@ export const engineeringDomains: SystemDomain[] = [
     capabilities: [
       {
         title: "Domain Decomposition & Service Boundaries",
-        description: "Decoupling business logic from host runtime environments and third-party quirks.",
-        technologies: ["System Topology", "Bounded Contexts", "Modular Monoliths"],
+        description: "Decoupling business logic from host runtime environments, third-party quirks, and defining clear failure handling.",
+        technologies: ["System Topology", "Bounded Contexts", "Failure Handling", "Modular Monoliths"],
       },
       {
         title: "State Machine & Lifecycle Modeling",
-        description: "Enforcing deterministic state transitions for orders, publications, and external syncs.",
-        technologies: ["Finite State Machines", "Event Streams", "Audit Logs"],
+        description: "Enforcing deterministic state transitions and pragmatic architectural contracts for orders, publications, and external syncs.",
+        technologies: ["Finite State Machines", "Event Streams", "Audit Logs", "Pragmatic Architecture"],
       },
     ],
   },
@@ -29,37 +29,42 @@ export const engineeringDomains: SystemDomain[] = [
     capabilities: [
       {
         title: "Shopify App Development",
-        description: "Embedded merchant admin interfaces, app bridges, webhooks, and commerce extensions.",
-        technologies: ["Shopify App Bridge", "Shopify REST / GraphQL", "Webhooks"],
+        description: "Embedded merchant admin interfaces, OAuth 2.0 authentication flows, app bridges, webhooks, and commerce extensions.",
+        technologies: ["Shopify App Bridge", "Shopify REST / GraphQL", "OAuth 2.0", "Webhooks"],
       },
       {
         title: "Webflow App Development",
-        description: "Native Webflow Apps integrating visual canvas properties with cloud-based workflows.",
-        technologies: ["Webflow Apps API", "Designer Extensions", "OAuth 2.0"],
+        description: "Native Webflow Apps integrating visual canvas properties with cloud-based workflows, OAuth authorization, and platform constraints.",
+        technologies: ["Webflow Apps API", "Designer Extensions", "OAuth 2.0", "Data Synchronization"],
       },
       {
         title: "WordPress & WooCommerce Engineering",
-        description: "High-performance modular plugins, custom post types, hook/filter architectures, and checkout engines.",
-        technologies: ["WordPress Plugin API", "WooCommerce Core", "Action & Filter Hooks"],
+        description: "Modular plugins, custom post types, hook/filter architectures, REST API integrations, and checkout engines.",
+        technologies: ["WordPress Plugin API", "WooCommerce Core", "Action & Filter Hooks", "REST APIs"],
       },
     ],
   },
   {
     id: "backend-apis",
     title: "Backend Systems, APIs & Queues",
-    tagline: "Resilient server-side services, idempotent webhook processors, and secure auth layers.",
+    tagline: "Relational data modeling, PostgreSQL, resilient server-side services, and idempotent webhook processors.",
     description:
-      "Engineering predictable backends that handle partner outages, retry loops, and concurrent traffic safely.",
+      "Engineering predictable backends with PostgreSQL, Prisma ORM, and resilient APIs that handle partner outages, retry loops, and concurrent traffic safely.",
     capabilities: [
       {
-        title: "RESTful API Engineering",
-        description: "Structured, predictable endpoints with strict payload validation and clean status contracts.",
-        technologies: ["Node.js", "Express", "PHP", "TypeScript"],
+        title: "Relational Data Modeling & PostgreSQL",
+        description: "Relational schema design with Prisma ORM, entity relationships, index strategy, complex query optimization, and full-text search.",
+        technologies: ["PostgreSQL", "Prisma ORM", "Relational Schemas", "Indexing", "Full-Text Search", "Query Optimization"],
       },
       {
-        title: "Webhook Ingestion & Idempotency",
-        description: "Signature verification (HMAC), deduplication locks, and fault-tolerant ingestion pipelines.",
-        technologies: ["HMAC Validation", "Idempotent Consumers", "Retry Backoffs"],
+        title: "REST & GraphQL API Engineering",
+        description: "Structured, predictable endpoints with strict payload validation, clean status contracts, and resilient failure handling.",
+        technologies: ["Node.js", "TypeScript", "REST APIs", "GraphQL", "Payload Validation"],
+      },
+      {
+        title: "Webhook Ingestion & Idempotent Processing",
+        description: "Signature verification (HMAC), deduplication locks, retry backoffs, and fault-tolerant ingestion pipelines.",
+        technologies: ["HMAC Validation", "Idempotent Consumers", "Retry Backoffs", "Error Boundaries"],
       },
     ],
   },
@@ -73,12 +78,12 @@ export const engineeringDomains: SystemDomain[] = [
       {
         title: "Multi-Model API Orchestration",
         description: "Integrating compatible AI model APIs with prompt templating, token budgeting, and fallback logic.",
-        technologies: ["Model API Integrations", "System Prompts", "Structured JSON Schemas"],
+        technologies: ["Model API Integrations", "System Prompts", "Structured JSON Schemas", "Model Fallbacks"],
       },
       {
-        title: "Content Discovery & Research Feeds",
-        description: "Aggregating RSS sources, monitoring competitor topics, and contextualizing research for generation.",
-        technologies: ["RSS Parsing", "Content Scraping", "Topic Clustering"],
+        title: "AI-Assisted Engineering Workflow",
+        description: "Uses AI-assisted engineering workflows for research, implementation support, debugging, review, and faster iteration while retaining responsibility for architecture, validation, security, and production decisions.",
+        technologies: ["AI-Assisted Workflows", "Agentic Iteration", "Implementation Verification", "Code Review"],
       },
     ],
   },
@@ -104,19 +109,24 @@ export const engineeringDomains: SystemDomain[] = [
   {
     id: "infrastructure-tooling",
     title: "Infrastructure, Deployment & Tooling",
-    tagline: "Linux servers, reverse proxies, deployment workflows, and AI-assisted tooling.",
+    tagline: "Production infrastructure ownership, container workflows, cloud deployments, and practical access controls.",
     description:
-      "Hands-on server provisioning, environment configuration, SSL management, and development pipelines.",
+      "Hands-on server provisioning, CI/CD automation, containerized deployments on Kubernetes, and practical cloud networking when the product requires production ownership.",
     capabilities: [
       {
-        title: "Linux VPS & Server Management",
-        description: "Linux server configuration, Nginx reverse proxy setup, process supervision, and SSL management.",
-        technologies: ["Ubuntu / Debian", "Nginx", "Systemd / PM2", "SSH & Firewall"],
+        title: "Linux, VPS & Cloud Server Environments",
+        description: "Server configuration, Nginx reverse proxy setup, process supervision, DNS records, SSL/TLS, and production troubleshooting across AWS, Google Cloud, and Linux VPS hosts.",
+        technologies: ["Linux / Ubuntu", "Nginx", "Systemd / PM2", "DNS & SSL", "AWS", "Google Cloud"],
       },
       {
-        title: "Cloud & Deployment Workflows",
-        description: "Git-based deployment pipelines, cloud-hosted service configuration, environment setup, and production monitoring.",
-        technologies: ["Git / GitHub Actions", "Cloud-hosted Services", "Production Monitoring", "AI Coding Agents"],
+        title: "CI/CD, Containers & Kubernetes Deployment",
+        description: "Automated delivery pipelines with GitHub Actions, Docker containerization, secrets management, and hands-on application deployment on hosted Kubernetes environments.",
+        technologies: ["GitHub Actions", "Docker", "Kubernetes", "Secrets Management", "Release Ownership"],
+      },
+      {
+        title: "Practical Cloud Networking & Access Controls",
+        description: "Foundational VPC concepts, subnets, firewall rules, IP/port restrictions, and client-to-server trust boundaries to secure production access.",
+        technologies: ["VPC & Subnets", "Firewall Rules", "Port Restrictions", "Access Controls", "Production Hardening"],
       },
     ],
   },

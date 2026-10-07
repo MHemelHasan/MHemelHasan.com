@@ -32,9 +32,9 @@ export function JourneyResponse({ onNavigateSection }: JourneyResponseProps) {
     {
       number: "03 / 03",
       label: "Ownership",
-      period: "2023 – Present",
+      period: "2023 – 2026",
       title: "Technical leadership widened into venture building.",
-      body: `${leadership?.roleTitle ?? "Technical leadership"} at Themefic and ${founder?.roleTitle ?? "Founder ownership"} at Social AI extend the product-engineering discipline into broader responsibility.`,
+      body: "At Themefic, the role expanded into architecture, product R&D, and production infrastructure ownership across a commercial platform portfolio. Building Social AI extends that discipline into founder-level ownership.",
     },
   ];
 
