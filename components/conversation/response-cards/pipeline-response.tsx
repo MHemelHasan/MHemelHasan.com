@@ -23,7 +23,7 @@ export function PipelineResponse({ onNavigateSection }: PipelineResponseProps) {
               <div>
                 <h4 className="text-sm font-semibold text-text-primary">{stage.title}</h4>
                 <p className="mt-1 text-sm leading-6 text-text-secondary">{stage.shortDesc}</p>
-                <p className="mt-2 font-mono text-[11px] leading-5 text-text-muted">{stage.deliverable}</p>
+                <p className="mt-2 font-mono text-xs leading-5 text-text-muted">{stage.deliverable}</p>
               </div>
             </li>
           ))}

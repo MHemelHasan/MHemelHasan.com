@@ -33,3 +33,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# redesign audit artifacts
+/docs/redesign/screenshots/
+/docs/redesign/*.json
+/scratch/
+

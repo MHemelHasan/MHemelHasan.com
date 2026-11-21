@@ -20,7 +20,7 @@ export function ResponseSection({
 }) {
   return (
     <section className="border-t border-border-subtle pt-5">
-      <p className="font-mono text-[11px] uppercase text-text-muted">{label}</p>
+      <p className="font-mono text-xs uppercase text-text-muted">{label}</p>
       {title && (
         <h3 className="mt-2 text-lg font-semibold leading-7 text-text-primary sm:text-xl">
           {title}

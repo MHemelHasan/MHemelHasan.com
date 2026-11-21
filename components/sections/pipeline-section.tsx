@@ -75,7 +75,7 @@ export function PipelineSection({ onAskInConversation }: PipelineSectionProps) {
                       isActive ? "bg-accent-soft px-4" : "hover:bg-surface-nested/70"
                     }`}
                   >
-                    <span className="font-mono text-xs text-accent-sky">{stage.stepNumber}</span>
+                    <span className="font-mono text-xs font-semibold text-accent-sky">{stage.stepNumber}</span>
                     <span className="text-sm font-semibold text-text-primary sm:text-base">{stage.title}</span>
                     <span
                       className={`h-2.5 w-2.5 border border-accent-sky ${isActive ? "bg-accent-sky" : "bg-transparent"}`}
@@ -100,9 +100,6 @@ export function PipelineSection({ onAskInConversation }: PipelineSectionProps) {
                 <h3 className="mt-3 text-3xl font-semibold leading-tight text-text-primary sm:text-4xl">{activeStage.title}</h3>
                 <p className="mt-3 max-w-2xl text-base leading-7 text-text-secondary">{activeStage.shortDesc}</p>
               </div>
-              <span className="hidden font-mono text-6xl font-medium leading-none text-accent-sky/15 sm:block" aria-hidden="true">
-                {activeStage.stepNumber}
-              </span>
             </div>
 
             <div className="border-b border-border-subtle py-7">

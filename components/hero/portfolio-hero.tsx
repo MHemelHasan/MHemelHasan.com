@@ -50,7 +50,7 @@ export function PortfolioHero() {
               <div className="grid grid-cols-2 gap-y-3 sm:grid-cols-5">
                 {buildStages.map((stage, index) => (
                   <div key={stage} className="flex items-center gap-2 text-xs font-medium text-text-secondary">
-                    <span className="font-mono text-[10px] text-brand-primary">
+                    <span className="font-mono text-xs text-brand-primary">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span>{stage}</span>

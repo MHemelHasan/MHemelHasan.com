@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { personalProfile } from "@/data/profile";
+import { SkipLink } from "@/components/ui/skip-link";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -94,6 +95,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className="font-sans antialiased text-text-primary bg-canvas selection:bg-accent-soft selection:text-accent-sky"
       >
+        <SkipLink targetId="#main-content" />
         {children}
       </body>
     </html>

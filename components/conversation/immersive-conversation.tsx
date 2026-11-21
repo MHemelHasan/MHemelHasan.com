@@ -255,7 +255,7 @@ export function ImmersiveConversation() {
               <span className="text-sm font-semibold text-text-primary">
                 {personalProfile.name}
               </span>
-              <p className="hidden font-mono text-[11px] text-text-muted sm:block">
+              <p className="hidden font-mono text-xs text-text-muted sm:block">
                 Portfolio conversation
               </p>
             </div>
@@ -296,7 +296,7 @@ export function ImmersiveConversation() {
             className="flex-1 overflow-y-auto scroll-smooth"
           >
             <div className="mx-auto flex min-h-full max-w-2xl flex-col justify-center py-8 sm:py-12">
-              <div className="flex items-center gap-2.5 font-mono text-[11px] text-text-muted">
+              <div className="flex items-center gap-2.5 font-mono text-xs text-text-muted">
                 <span className="flex h-7 w-7 items-center justify-center rounded-full border border-border-accent bg-accent-soft text-accent-sky">
                   <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
                 </span>
@@ -314,7 +314,7 @@ export function ImmersiveConversation() {
               <div className="mt-7">{renderComposer(true)}</div>
 
               <div className="mt-7">
-                <p className="font-mono text-[11px] uppercase text-text-muted">Try asking</p>
+                <p className="font-mono text-xs uppercase text-text-muted">Try asking</p>
                 <div className="mt-3 grid gap-2 sm:grid-cols-2">
                   {starterPrompts.map((prompt) => (
                     <button
@@ -350,7 +350,7 @@ export function ImmersiveConversation() {
                     return (
                       <div key={msg.id} data-role="user-message" className="flex justify-end pt-1">
                         <div className="max-w-[88%] rounded-lg border border-border-accent bg-accent-soft px-4 py-3 sm:max-w-[72%]">
-                          <span className="block font-mono text-[10px] uppercase text-accent-sky">You</span>
+                          <span className="block font-mono text-xs uppercase text-accent-sky">You</span>
                           <span className="mt-1 block text-sm font-semibold leading-6 text-text-primary sm:text-base">
                             {msg.queryText}
                           </span>
@@ -366,7 +366,7 @@ export function ImmersiveConversation() {
                       ref={isLatest ? latestMessageRef : undefined}
                       className="w-full pt-1 animate-in fade-in-0 slide-in-from-bottom-2 duration-300 motion-reduce:duration-0"
                     >
-                      <div className="mb-4 flex items-center gap-2 font-mono text-[11px] text-text-muted">
+                      <div className="mb-4 flex items-center gap-2 font-mono text-xs text-text-muted">
                         <Sparkles className="h-3.5 w-3.5 text-accent-sky" aria-hidden="true" />
                         <span>M Hemel Hasan</span>
                       </div>
@@ -400,7 +400,7 @@ export function ImmersiveConversation() {
 
             <div className="shrink-0 space-y-3 border-t border-border-subtle bg-canvas pb-[max(1rem,env(safe-area-inset-bottom))] pt-3 sm:pb-6">
               <div className="overflow-x-auto py-0.5 no-scrollbar">
-                <p className="font-mono text-[11px] text-text-muted">Continue the conversation</p>
+                <p className="font-mono text-xs text-text-muted">Continue the conversation</p>
                 <div className="mt-2 flex w-max items-center gap-2 pr-1">
                   {contextualPrompts.map((prompt) => (
                     <button

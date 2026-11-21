@@ -17,15 +17,15 @@ export function SocialAIResponse({ onNavigateSection }: SocialAIResponseProps) {
 
       <dl className="grid gap-4 border-y border-border-subtle py-4 sm:grid-cols-3 sm:gap-6">
         <div>
-          <dt className="font-mono text-[11px] text-text-muted">Role</dt>
+          <dt className="font-mono text-xs text-text-muted">Role</dt>
           <dd className="mt-1 text-sm font-semibold text-text-primary">Founder / Lead Architect</dd>
         </div>
         <div>
-          <dt className="font-mono text-[11px] text-text-muted">Status</dt>
+          <dt className="font-mono text-xs text-text-muted">Status</dt>
           <dd className="mt-1 text-sm font-semibold text-accent-sky">{socialAIVenture.statusLabel}</dd>
         </div>
         <div>
-          <dt className="font-mono text-[11px] text-text-muted">Connected platforms</dt>
+          <dt className="font-mono text-xs text-text-muted">Connected platforms</dt>
           <dd className="mt-1 text-sm leading-6 text-text-secondary">
             {socialAIVenture.channels?.join(" · ")}
           </dd>
@@ -50,7 +50,7 @@ export function SocialAIResponse({ onNavigateSection }: SocialAIResponseProps) {
         <div className="grid gap-x-8 sm:grid-cols-2">
           {socialAICapabilityGroups.map((group, index) => (
             <div key={group.title} className="border-t border-border-subtle py-4 first:border-t-0 sm:[&:nth-child(2)]:border-t-0">
-              <p className="font-mono text-[11px] text-accent-sky">0{index + 1}</p>
+              <p className="font-mono text-xs text-accent-sky">0{index + 1}</p>
               <h4 className="mt-2 text-sm font-semibold text-text-primary">{group.title}</h4>
               <p className="mt-1 text-sm leading-6 text-text-secondary">{group.description}</p>
             </div>

@@ -18,30 +18,27 @@ export function Footer() {
         <div className="flex items-center gap-4 text-xs text-text-secondary">
           <a
             href={`mailto:${personalProfile.email}`}
-            className="flex items-center gap-1.5 transition-colors hover:text-text-primary"
-            aria-label="Direct Email"
+            className="flex items-center gap-1.5 transition-colors hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-sky rounded"
           >
-            <Mail className="h-3.5 w-3.5 text-accent-sky" />
+            <Mail className="h-3.5 w-3.5 text-accent-sky" aria-hidden="true" />
             <span>{personalProfile.email}</span>
           </a>
           <a
             href="https://github.com/MHemelHasan"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 transition-colors hover:text-text-primary"
-            aria-label="GitHub Profile"
+            className="flex items-center gap-1 transition-colors hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-sky rounded"
           >
-            <Github className="h-3.5 w-3.5" />
+            <Github className="h-3.5 w-3.5" aria-hidden="true" />
             <span>GitHub</span>
           </a>
           <a
             href="https://www.linkedin.com/in/MHemelHasan"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 transition-colors hover:text-text-primary"
-            aria-label="LinkedIn Profile"
+            className="flex items-center gap-1 transition-colors hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-sky rounded"
           >
-            <Linkedin className="h-3.5 w-3.5" />
+            <Linkedin className="h-3.5 w-3.5" aria-hidden="true" />
             <span>LinkedIn</span>
           </a>
         </div>

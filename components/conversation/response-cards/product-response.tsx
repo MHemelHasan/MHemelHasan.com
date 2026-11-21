@@ -38,7 +38,7 @@ export function ProductResponse({ onNavigateSection }: ProductResponseProps) {
                   </p>
                 )}
               </div>
-              <p className="font-mono text-[11px] text-text-muted sm:text-right">{product.typeLabel}</p>
+              <p className="font-mono text-xs text-text-muted sm:text-right">{product.typeLabel}</p>
             </article>
           ))}
         </div>
@@ -49,7 +49,7 @@ export function ProductResponse({ onNavigateSection }: ProductResponseProps) {
           {additional.map((product) => (
             <li key={product.id}>
               <p className="text-sm font-semibold text-text-primary">{product.title}</p>
-              <p className="mt-1 font-mono text-[11px] text-text-muted">{product.typeLabel}</p>
+              <p className="mt-1 font-mono text-xs text-text-muted">{product.typeLabel}</p>
             </li>
           ))}
         </ul>

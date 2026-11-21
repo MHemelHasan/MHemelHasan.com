@@ -57,7 +57,7 @@ export function JourneyResponse({ onNavigateSection }: JourneyResponseProps) {
             <div>
               <p className="font-mono text-xs text-accent-sky">{chapter.number}</p>
               <p className="mt-2 text-sm font-semibold uppercase text-text-primary">{chapter.label}</p>
-              <p className="mt-1 font-mono text-[11px] text-text-muted">{chapter.period}</p>
+              <p className="mt-1 font-mono text-xs text-text-muted">{chapter.period}</p>
             </div>
             <div>
               <h3 className={`${chapter.emphasized ? "text-2xl sm:text-3xl" : "text-xl sm:text-2xl"} font-semibold leading-tight text-text-primary`}>

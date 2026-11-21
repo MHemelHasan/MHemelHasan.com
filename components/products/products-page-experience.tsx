@@ -19,7 +19,8 @@ function ProductsPageContent() {
         navigationBasePath="/"
         onStartConversation={() => openConversation()}
       />
-      <main id="top" className="flex-1">
+      <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
+        <div id="top" aria-hidden="true" />
         <ProductsPortfolio onAsk={openConversation} />
       </main>
       <Footer />

@@ -32,7 +32,8 @@ function HomeContent() {
       <Header onStartConversation={handleStartConversation} />
 
       {/* Main Experience */}
-      <main id="top" className="flex-1">
+      <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
+        <div id="top" aria-hidden="true" />
         <PortfolioHero />
 
         <VenturesSection onAsk={openConversation} />

@@ -27,7 +27,7 @@ export function ContactResponse({ onNavigateSection }: ContactResponseProps) {
 
       <div className="border-y border-border-subtle">
         <div className="grid gap-3 py-5 sm:grid-cols-[9rem_1fr_auto] sm:items-center">
-          <p className="font-mono text-[11px] text-text-muted">Direct email</p>
+          <p className="font-mono text-xs text-text-muted">Direct email</p>
           <a
             href={`mailto:${personalProfile.email}`}
             className="min-w-0 break-all text-base font-semibold text-text-primary transition-colors hover:text-accent-sky sm:break-normal"
@@ -47,7 +47,7 @@ export function ContactResponse({ onNavigateSection }: ContactResponseProps) {
         </div>
 
         <div className="grid gap-3 border-t border-border-subtle py-5 sm:grid-cols-[9rem_1fr] sm:items-center">
-          <p className="font-mono text-[11px] text-text-muted">Based in</p>
+          <p className="font-mono text-xs text-text-muted">Based in</p>
           <p className="text-sm text-text-secondary">
             <MapPin className="mr-2 inline h-4 w-4" aria-hidden="true" />
             {personalProfile.location}
@@ -55,7 +55,7 @@ export function ContactResponse({ onNavigateSection }: ContactResponseProps) {
         </div>
 
         <div className="grid gap-3 border-t border-border-subtle py-5 sm:grid-cols-[9rem_1fr] sm:items-center">
-          <p className="font-mono text-[11px] text-text-muted">Professional links</p>
+          <p className="font-mono text-xs text-text-muted">Professional links</p>
           <div className="flex flex-wrap gap-x-6 gap-y-3">
             {personalProfile.socialLinks.map((social) => (
               <a

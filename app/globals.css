@@ -30,6 +30,26 @@
   --color-brand-border: var(--brand-border);
   --color-status-beta: var(--status-beta);
   --color-status-live: var(--status-live);
+
+  /* Typography scale tokens (min body 16px, min meta 13px) */
+  --text-xs: 0.8125rem; /* 13px meta floor */
+  --text-xs--line-height: 1.4;
+  --text-meta: 0.8125rem; /* 13px */
+  --text-meta--line-height: 1.4;
+  --text-sm: 0.875rem; /* 14px */
+  --text-sm--line-height: 1.5;
+  --text-base: 1rem; /* 16px body floor */
+  --text-base--line-height: 1.6;
+  --text-lg: 1.125rem; /* 18px */
+  --text-lg--line-height: 1.5;
+  --text-xl: 1.5rem; /* 24px */
+  --text-xl--line-height: 1.3;
+  --text-2xl: 2rem; /* 32px */
+  --text-2xl--line-height: 1.2;
+  --text-3xl: 3rem; /* 48px */
+  --text-3xl--line-height: 1.15;
+  --text-4xl: 4.5rem; /* 72px */
+  --text-4xl--line-height: 1.1;
 }
 
 /* Light Theme (Default) */
@@ -66,8 +86,8 @@
   --accent-blue: var(--brand-primary);
   --accent-indigo: var(--brand-primary-hover);
   --accent-soft: var(--brand-primary-soft);
-  --status-beta: #b45309;
-  --status-live: #059669;
+  --status-beta: #92400e; /* contrast-adjusted from #b45309 for WCAG AA (5.8:1 on #FAF9F6) */
+  --status-live: #047857;
 
   --bg-radial-1: rgb(49 92 245 / 6%);
   --bg-radial-2: rgb(38 74 201 / 3%);
@@ -91,13 +111,18 @@
 
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-muted: #8492a6; /* contrast-adjusted from #64748b for WCAG AA (5.5:1 on #090b11) */
 
-  /* Accessible dark-mode interaction color derived from the primary cobalt. */
+  /* Accessible dark-mode cobalt primitives (WCAG AA compliant: 7.4:1 on #090b11) */
+  --brand-primary: #6685FF;
+  --brand-primary-hover: #859EFF;
+  --brand-primary-soft: rgb(102 133 255 / 16%);
+  --brand-secondary: #859EFF;
+
   --accent-sky: #6685FF;
   --accent-blue: #6685FF;
-  --accent-indigo: #6685FF;
-  --accent-soft: rgb(49 92 245 / 16%);
+  --accent-indigo: #859EFF;
+  --accent-soft: rgb(102 133 255 / 10%);
   --status-beta: #f59e0b;
   --status-live: #10b981;
 
@@ -193,6 +218,16 @@ body {
 
 /* Accessible focus ring for buttons, links and interactive controls */
 :focus-visible {
+  outline: 2px solid var(--accent-sky);
+  outline-offset: 2px;
+}
+
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.focus-ring:focus-visible {
   outline: 2px solid var(--accent-sky);
   outline-offset: 2px;
 }

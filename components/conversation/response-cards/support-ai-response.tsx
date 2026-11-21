@@ -17,11 +17,11 @@ export function SupportAIResponse({ onNavigateSection }: SupportAIResponseProps)
 
       <dl className="grid gap-4 border-y border-border-subtle py-4 sm:grid-cols-2 sm:gap-8">
         <div>
-          <dt className="font-mono text-[11px] text-text-muted">Stage</dt>
+          <dt className="font-mono text-xs text-text-muted">Stage</dt>
           <dd className="mt-1 text-sm font-semibold text-accent-sky">{supportAIVenture.typeLabel}</dd>
         </div>
         <div>
-          <dt className="font-mono text-[11px] text-text-muted">Channels being explored</dt>
+          <dt className="font-mono text-xs text-text-muted">Channels being explored</dt>
           <dd className="mt-1 text-sm leading-6 text-text-secondary">
             {supportAIVenture.channels?.join(" · ")}
           </dd>
